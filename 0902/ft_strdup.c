@@ -6,7 +6,7 @@
 /*   By: sanhwang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 13:40:47 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/02/09 14:02:23 by sanhwang         ###   ########.fr       */
+/*   Updated: 2024/02/11 10:52:48 by sanhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*
@@ -43,7 +43,7 @@ char	*ft_strdup(char *str)
 	dup = (char *)malloc(ft_strlen(str) + 1);
 	if (!dup)
 		return (NULL);
-	dup = ft_strdup(dup, str);
+	dup = ft_strcpy(dup, str);
 	return (dup);
 }
 */
