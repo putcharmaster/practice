@@ -6,7 +6,7 @@
 /*   By: sanhwang <sanhwang@student.42luxembourg.l  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 17:42:52 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/03/15 18:39:24 by sanhwang         ###   ########.fr       */
+/*   Updated: 2024/03/23 12:34:19 by sanhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,13 @@ If the number is both a multiple of 3 and a multiple of 5, it prints 'fizzbuzz' 
 
 void	ft_putstr(char *str)
 {
-	while (str)
+	int	i;
+
+	i = 0;
+	while (str[i])
 	{
-		write(1, str, 1);
-		str++;
+		write(1, &str[i], 1);
+		i++;
 	}
 }
 
@@ -71,5 +74,6 @@ void	fizzbuzz(void)
 int	main(void)
 {
 	fizzbuzz();
+	ft_putstr("working?");
 	return (0);
 }
