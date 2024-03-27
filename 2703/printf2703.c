@@ -96,4 +96,6 @@ int	main()
 	write(1, "\n\n", 2);
 	count = my_printf("%x\n", -2147483648);
 	printf("the chars written are %d\n", count);
+	int *nul = 0;
+	printf("%p", nul);
 } 
