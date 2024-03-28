@@ -6,13 +6,11 @@
 /*   By: sanhwang <sanhwang@student.42luxembourg.l  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 12:27:45 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/03/28 17:32:36 by sanhwang         ###   ########.fr       */
+/*   Updated: 2024/03/28 21:02:49 by sanhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include <unistd.h>
-#include <stddef.h>
+#include "../includes/ft_printf.h"
 
 size_t	n_len(int n)
 {
@@ -41,9 +39,9 @@ void	recursive_int(int n)
 
 int	ft_int(int n)
 {
-	int	len;
+	int	r;
 
-	len = 0;
+	r = n_len(n);
 	if (n == -2147483648)
 		return (write(1, "-2147483648", 11));
 	if (n < 0)
@@ -52,7 +50,7 @@ int	ft_int(int n)
 		n *= -1;
 	}
 	recursive_int(n);
-	return (n_len(n));
+	return (r);
 }
 
 size_t	ui_len(unsigned int n)
@@ -108,14 +106,11 @@ void	recursive_hexa(unsigned long long ptr)
 
 int	ft_void(void *ptr)
 {
-	int	len;
-
-	len = 0;
 	if (ptr == NULL)
 		return (write(1, "(nil)", 5));
-	write(1, "ox", 2);
+	write(1, "0x", 2);
 	recursive_hexa((unsigned long long)ptr);
-	return (hexa_len((unsigned long long)ptr));
+	return (hexa_len((unsigned long long)ptr) + 2);
 }
 
 int	ft_hexa(unsigned long long n, const char Xx)
