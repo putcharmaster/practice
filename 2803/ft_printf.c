@@ -1,15 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sanhwang <sanhwang@student.42luxembourg.l  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/28 12:27:45 by sanhwang          #+#    #+#             */
+/*   Updated: 2024/03/28 17:32:36 by sanhwang         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdarg.h>
 #include <unistd.h>
-#include <stdio.h>
+#include <stddef.h>
 
-size_t	nbrlen(int n)
+size_t	n_len(int n)
 {
-	size_t	len;
+	size_t len;
 
 	len = 0;
-	if(n <= 0)
+	if (n <= 0)
 		len++;
-	while(n)
+	while (n)
 	{
 		len++;
 		n /= 10;
@@ -17,20 +29,20 @@ size_t	nbrlen(int n)
 	return (len);
 }
 
-void	put_int(int n)
+void	recursive_int(int n)
 {
-	char	*digits;
+	char	*digit;
 
-	digits = "0123456789";
-	if (n > 9)
-		put_int(n / 10);
-	write(1, &digits[n % 10], 1);
+	digit = "0123456789";
+	if(n > 9)
+		recursive_int(n / 10);
+	write(1, &digit[n % 10], 1);
 }
 
-int	ft_printnbr(int n)
+int	ft_int(int n)
 {
 	int	len;
-	
+
 	len = 0;
 	if (n == -2147483648)
 		return (write(1, "-2147483648", 11));
@@ -39,11 +51,11 @@ int	ft_printnbr(int n)
 		write(1, "-", 1);
 		n *= -1;
 	}
-	put_int(n);
-	return(nbrlen(n));
+	recursive_int(n);
+	return (n_len(n));
 }
 
-size_t	n_len(unsigned int n)
+size_t	ui_len(unsigned int n)
 {
 	size_t	len;
 
@@ -58,62 +70,25 @@ size_t	n_len(unsigned int n)
 	return (len);
 }
 
-int	ft_printunsigned(unsigned int n)
+int	ft_ui(unsigned int n)
 {
-	char	*digits;
+	char	*digit;
 
-	digits = "0123456789";
-	if (n > 9)
-		ft_printunsigned(n / 10);
-	write(1, &digits[n % 10], 1);
-	return (n_len(n));
+	digit = "0123456789";
+	if(n > 9)
+		ft_ui(n / 10);
+	write(1, &digit[n % 10], 1);
+	return (ui_len(n));
 }
 
-size_t	ptrlen(unsigned long long n)
-{
-	size_t	len;
-
-	len = 0;
-	if(n == 0)
-		return (1);
-	while(n)
-	{
-		len++;
-		n /= 16;
-	}
-	return (len);
-}
-
-void	putptr(unsigned long long ptr)
-{
-	char	*hexa;
-
-	hexa = "0123456789abcdef";
-	if (ptr >= 16)
-		putptr(ptr / 16);
-	write(1, &hexa[ptr % 16], 1);
-}
-
-int	ft_printptr(void *ptr)
-{
-	int	len;
-
-	len = 0;
-	if (ptr == NULL)
-		return (write(1, "(nil)", 5));
-	write(1, "0x", 2);
-	putptr((unsigned long long)ptr);
-	return (ptrlen((unsigned long long)ptr));
-}
-
-size_t	hexalen(unsigned int n)
+size_t	hexa_len(unsigned long long n)
 {
 	size_t	len;
 
 	len = 0;
 	if (n == 0)
 		return (1);
-	while(n)
+	while (n)
 	{
 		len++;
 		n /= 16;
@@ -121,38 +96,58 @@ size_t	hexalen(unsigned int n)
 	return (len);
 }
 
-int	ft_printhexa(unsigned int n, const char Xx)
+void	recursive_hexa(unsigned long long ptr)
+{
+	char	*hexa;
+
+	hexa = "0123456789abcdef";
+	if(ptr >= 16)
+		recursive_hexa(ptr / 16);
+	write(1, &hexa[ptr % 16], 1);
+}
+
+int	ft_void(void *ptr)
+{
+	int	len;
+
+	len = 0;
+	if (ptr == NULL)
+		return (write(1, "(nil)", 5));
+	write(1, "ox", 2);
+	recursive_hexa((unsigned long long)ptr);
+	return (hexa_len((unsigned long long)ptr));
+}
+
+int	ft_hexa(unsigned long long n, const char Xx)
 {
 	char	*upper;
 	char	*lower;
 
 	upper = "0123456789ABCDEF";
 	lower = "0123456789abcdef";
-
 	if (n >= 16)
-		ft_printhexa(n / 16, Xx);
+		ft_hexa(n / 16, Xx);
 	if (Xx == 'X')
-		write(1, &upper[n % 16], 1);
+		write (1, &upper[n % 16], 1);
 	else if (Xx == 'x')
 		write(1, &lower[n % 16], 1);
-	return (hexalen(n));
+	return (hexa_len(n));
 }
 
-
-int	ft_printchar(int c)
+int	ft_char(int c)
 {
 	write(1, &c, 1);
 	return (1);
 }
 
-int	ft_printstr(char *s)
+int	ft_str(char *s)
 {
 	int	i;
 
 	i = 0;
 	if (s == 0)
 	{
-		ft_printstr("(null)");
+		ft_str("(null)");
 		return (6);
 	}
 	while (s[i])
@@ -160,52 +155,55 @@ int	ft_printstr(char *s)
 	return (i);
 }
 
-int	checkstr(const char s, va_list args)
+int	check_spec(const char s, va_list ap)
 {
-	int	count;
+	int	len;
 
-	count = 0;
-	if (s == '%')
-		count += ft_printchar('%');
+	len = 0;
 	if (s == 'c')
-		count += ft_printchar(va_arg(args, int));
+		len += ft_char(va_arg(ap, int));
 	if (s == 's')
-		count += ft_printstr(va_arg(args, char *));
+		len += ft_str(va_arg(ap, char *));
 	if (s == 'd' || s == 'i')
-		count += ft_printnbr(va_arg(args, int));
+		len += ft_int(va_arg(ap, int));
 	if (s == 'u')
-		count += ft_printunsigned(va_arg(args, unsigned int));
-	if (s == 'p')
-		count += ft_printptr(va_arg(args, void *));
+		len += ft_ui(va_arg(ap, unsigned int));
 	if (s == 'x' || s == 'X')
-		count += ft_printhexa(va_arg(args, unsigned int), s);
-	return (count);
-
+		len += ft_hexa(va_arg(ap, unsigned long long), s);
+	if (s == 'p')
+		len += ft_void(va_arg(ap, void *));
+	if (s == '%')
+		len += ft_char('%');
+	return (len);
 }
+
 
 int	ft_printf(const char *str, ...)
 {
-	va_list	args;
-	int	count;
+	va_list	ap;
+	int	len;
 	int	i;
 
-	count = 0;
+	len = 0;
 	i = 0;
-	va_start(args, str);
-	while(str[i])
+	va_start(ap, str);
+	while (str[i])
 	{
 		if (str[i] == '%')
 		{
-			count += checkstr(str[i + 1], args);
+			len += check_spec(str[i + 1], ap);
 			i++;
 		}
 		else
-			count += ft_printchar(str[i]);
+			len += ft_char(str[i]);
 		i++;
 	}
-	va_end(args);
-	return (count);
+	va_end(ap);
+	return (len);
 }
+
+
+
 
 #include <stdio.h>
 #include <limits.h>
