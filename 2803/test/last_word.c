@@ -6,7 +6,7 @@
 /*   By: sanhwang <sanhwang@student.42luxembourg.l  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 21:34:16 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/03/28 22:16:39 by sanhwang         ###   ########.fr       */
+/*   Updated: 2024/03/29 15:55:46 by sanhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int ac, char **av)
 	{
 		while(av[1][i])
 			i++;
-		while(av[1][i] <= 32)
+		while(av[1][i] < 33)
 			i--;
 		while(av[1][i] > 32)
 			i--;
