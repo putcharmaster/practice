@@ -6,7 +6,7 @@
 /*   By: sanhwang <sanhwang@student.42luxembourg.l  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 16:22:45 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/03/17 16:52:32 by sanhwang         ###   ########.fr       */
+/*   Updated: 2024/03/28 22:17:28 by sanhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		main(int argc, char *argv[])
 			i--;
 		while (argv[1][i] > 32)
 			i--;
-		//i++;
+		i++; // this line is so critical!!!!!!!!!!!!!!!!!!
 		while (argv[1][i] > 32)
 			write(1, &argv[1][i++], 1);
 	}
