@@ -6,11 +6,11 @@
 /*   By: sanhwang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 14:16:29 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/03/29 15:13:48 by sanhwang         ###   ########.fr       */
+/*   Updated: 2024/03/30 15:38:55 by sanhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/printf.h"
+#include "../includes/ft_printf.h"
 
 size_t	n_len(int n)
 {
@@ -19,7 +19,7 @@ size_t	n_len(int n)
 	len = 0;
 	if (n <= 0)
 		len++;
-	while(n)
+	while (n)
 	{
 		len++;
 		n /= 10;
@@ -34,7 +34,7 @@ void	r_int(int n)
 	digit = "0123456789";
 	if (n > 9)
 		r_int(n / 10);
-	write(1, &digit[n % 16], 1);
+	write(1, &digit[n % 10], 1);
 }
 
 int	ft_int(int n)
@@ -50,7 +50,7 @@ int	ft_int(int n)
 		n *= -1;
 	}
 	r_int(n);
-	return (r);	
+	return (r);
 }
 
 size_t	ui_len(unsigned int n)
@@ -60,7 +60,7 @@ size_t	ui_len(unsigned int n)
 	len = 0;
 	if (n == 0)
 		return (1);
-	while(n)
+	while (n)
 	{
 		len++;
 		n /= 10;

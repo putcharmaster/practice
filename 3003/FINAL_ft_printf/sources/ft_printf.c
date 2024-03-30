@@ -3,14 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanhwang <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sanhwang <sanhwang@student.42luxembourg.l  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/29 08:40:53 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/03/29 15:09:42 by sanhwang         ###   ########.fr       */
+/*   Created: 2024/03/30 16:02:12 by sanhwang          #+#    #+#             */
+/*   Updated: 2024/03/30 16:27:05 by sanhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
+
+int	ft_char(int c)
+{
+	write(1, &c, 1);
+	return (1);
+}
+
+int	ft_str(char *s)
+{
+	int	i;
+
+	i = 0;
+	if (s == 0)
+	{
+		ft_str("(null)");
+		return (6);
+	}
+	while (s[i])
+		write(1, &s[i++], 1);
+	return (i);
+}
 
 int	check_spec(const char s, va_list ap)
 {
@@ -24,27 +45,26 @@ int	check_spec(const char s, va_list ap)
 	if (s == 'd' || s == 'i')
 		len += ft_int(va_arg(ap, int));
 	if (s == 'u')
-		len += ft_unsingned(va_arg(ap, unsigned int));
+		len += ft_ui(va_arg(ap, unsigned int));
+	if (s == 'x' || s == 'X')
+		len += ft_hexa(va_arg(ap, unsigned long long), s);
 	if (s == 'p')
 		len += ft_void(va_arg(ap, void *));
-	if (s == 'x' || s == 'X')
-		len += ft_hexa(va_arg(ap, unsigned long long));
 	if (s == '%')
 		len += ft_char('%');
 	return (len);
-
 }
 
 int	ft_printf(const char *str, ...)
 {
 	va_list	ap;
-	int	len;
-	int	i;
+	int		len;
+	int		i;
 
 	len = 0;
 	i = 0;
 	va_start(ap, str);
-	while(str[i])
+	while (str[i])
 	{
 		if (str[i] == '%')
 		{

@@ -6,7 +6,7 @@
 /*   By: sanhwang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 09:18:10 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/03/29 15:07:44 by sanhwang         ###   ########.fr       */
+/*   Updated: 2024/03/30 15:41:13 by sanhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,7 @@ int	ft_str(char *str)
 		return (6);
 	}
 	while (str[i])
-	{
-		write(1, &str[i], 1);
-		i++;
-	}
+		write(1, &str[i++], 1);
 	return (i);
 }
 
