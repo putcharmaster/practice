@@ -6,7 +6,7 @@
 /*   By: sanhwang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 13:29:12 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/03/30 15:59:41 by sanhwang         ###   ########.fr       */
+/*   Updated: 2024/03/30 16:36:21 by sanhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ size_t	h_len(unsigned long long n)
 	len = 0;
 	if (n == 0)
 		return (1);
-	if (n)
+	while (n)
 	{
 		len++;
 		n /= 16;
