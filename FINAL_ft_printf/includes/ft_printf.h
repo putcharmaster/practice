@@ -6,7 +6,7 @@
 /*   By: sanhwang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 15:10:20 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/03/30 18:24:27 by sanhwang         ###   ########.fr       */
+/*   Updated: 2024/04/01 20:35:55 by sanhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@
 size_t	ui_len(unsigned int n);
 size_t	n_len(int n);
 size_t	h_len(unsigned int n);
-size_t  p_len(uintptr_t n);
+size_t	p_len(uintptr_t n);
 void	recursive_int(int n);
-void    recursive_hexa(uintptr_t ptr);
+void	recursive_hexa(uintptr_t ptr);
 int		ft_str(char *str);
 int		ft_char(int c);
 int		ft_ui(unsigned int n);
