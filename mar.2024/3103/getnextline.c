@@ -155,7 +155,7 @@ char	*save_oldline(char *line)
 		return (NULL);
 	while (line[i])
 		oldline[j++] = line[i++];
-	oldline[i] = '\0';
+	oldline[i] = '\0'; // i think oldline[j] instead of [i];   need to check this.
 	free (line);
 	return (oldline);
 }
