@@ -6,7 +6,7 @@
 /*   By: sanhwang <sanhwang@student.42luxembourg.l  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 15:46:26 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/04/12 15:56:35 by sanhwang         ###   ########.fr       */
+/*   Updated: 2024/04/13 15:17:53 by sanhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ char	*newline(char *line)
 
 char	*leftover(char *line)
 {
-	int	i;
-	int	j;
-	int	len;
+	int		i;
+	int		j;
+	int		len;
 	char	*rest;
 
 	i = 0;
@@ -96,7 +96,7 @@ char	*leftover(char *line)
 char	*get_next_line(int fd)
 {
 	static char	*line;
-	char	*ret;
+	char		*ret;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
@@ -104,8 +104,6 @@ char	*get_next_line(int fd)
 	if (!line)
 		return (NULL);
 	ret = newline(line);
-	line = leftover(line);
-	return (ret)(line);
 	line = leftover(line);
 	return (ret);
 }
