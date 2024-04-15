@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanhwang <sanhwang@student.42luxembourg.l  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/12 15:39:33 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/04/13 15:35:49 by sanhwang         ###   ########.fr       */
+/*   Created: 2024/04/11 16:43:00 by sanhwang          #+#    #+#             */
+/*   Updated: 2024/04/13 15:36:09 by sanhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,10 @@ int	ft_strchr_n(char *s, int c)
 	i = 0;
 	if (!s || !(*s))
 		return (1);
-	while (s[i])
+	while (s[i++])
 	{
 		if (s[i] == (char)c)
 			return (0);
-		i++;
 	}
 	return (1);
 }
