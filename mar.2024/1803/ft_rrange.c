@@ -49,7 +49,7 @@ int	*ft_rrange(int start, int end)
                 size = end - start + 1;
 	else
                 size = start - end + 1;
-	r = malloc(sizeof(int) * size)
+	r = malloc(sizeof(int) * size);
  	if (!r)
 		return (NULL);
 	n = end;
