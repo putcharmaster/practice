@@ -6,23 +6,33 @@
 /*   By: sanhwang <sanhwang@student.42luxembourg.l  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 15:09:05 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/04/16 15:33:26 by sanhwang         ###   ########.fr       */
+/*   Updated: 2024/04/18 22:41:24 by sanhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
+int	ft_abs(int n)
+{
+	if (n >= 0)
+		return (n);
+	else
+		return (-n);
+}
+
 int	*ft_range(int start, int end)
 {
 	int	i;
 	int	*r;
+	int	len;
 
 	i = 0;
+	len = start - end + 1;
 	if (start > end)
-		r = malloc(sizeof(int) * (start - end) + 1);
+		r = malloc(sizeof(int) * len);
 	else
-		r = malloc(sizeof(int) * (end - start) + 1);
-	while (i < len)
+		r = malloc(sizeof(int) * len);
+	while (i <= len)
 	{
 		if (start < end)
 		{
