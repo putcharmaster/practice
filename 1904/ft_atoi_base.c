@@ -3,27 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanhwang <sanhwang@student.42luxembourg.l  +#+  +:+       +#+        */
+/*   By: sanhwang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/18 23:26:34 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/04/19 13:00:13 by sanhwang         ###   ########.fr       */
+/*   Created: 2024/04/19 11:12:09 by sanhwang          #+#    #+#             */
+/*   Updated: 2024/04/19 12:51:22 by sanhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_valid(char c, int base)
 {
-	char	*l_digits;
-	char	*u_digits;
+	char	*upper;
+	char	*lower;
 
-	l_digits = "0123456789abcdef";
-	u_digits = "0123456798ABCDEF";
+	upper = "0123456789ABCDEF";
+	lower = "0123456789abcdef";
 	while (base--)
-		if (l_digits[base] == c || u_digits[base] == c)
+		if (upper[base] == c || lower[base] == c)
 			return (1);
 	return (0);
 }
 
-int	ft_value(char c)
+int	int_value(char c)
 {
 	if (c >= '0' && c <= '9')
 		return (c - '0');
@@ -34,31 +34,32 @@ int	ft_value(char c)
 	return (0);
 }
 
-int	ft_atoi_base(const char *str, int base)
+int	ft_atoi_base(const char *str, int str_base)
 {
 	int	i;
-	int	r;
 	int	m;
+	int	r;
 
 	i = 0;
-	r = 0;
 	m = 1;
+	r = 0;
 	if (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
 			m = -m;
-		str++;
+		i++;
 	}
-	while (ft_valid(str[i], base))
-		r = r * base + ft_value(str[i++]);
+	while (ft_valid(str[i], str_base))
+		r = r * str_base + int_value(str[i++]);
 	return (r * m);
 }
 
 #include <stdio.h>
 int main()
 {
-  char str[] = "13";
+  char str[] = "a";
   int base = 16;
   printf("%d", ft_atoi_base(str, base));
 
   }
+

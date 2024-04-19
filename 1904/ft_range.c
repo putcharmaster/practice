@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_range.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanhwang <sanhwang@student.42luxembourg.l  +#+  +:+       +#+        */
+/*   By: sanhwang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/18 22:03:15 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/04/19 13:01:27 by sanhwang         ###   ########.fr       */
+/*   Created: 2024/04/19 12:52:11 by sanhwang          #+#    #+#             */
+/*   Updated: 2024/04/19 13:05:28 by sanhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int	ft_abs(int n)
 
 int	*ft_range(int start, int end)
 {
-	int	len;
-	int	*r;
 	int	i;
+	int	*r;
+	int	len;
 
 	i = 0;
 	len = ft_abs(start - end) + 1;
@@ -43,83 +43,12 @@ int	*ft_range(int start, int end)
 	return (r);
 }
 
-
-
-
-
-
-
-
-
-
-/*
-int *ft_range(int start, int end)
-{
-	int i = 0;
-	int len = abs((end - start)) + 1;
-	int *res = (int *)malloc(sizeof(int) * len);
-	
-	while (i < len)
-	{
-		if (start < end)
-		{
-			res[i] = start;
-			start++;
-			i++;
-		}
-		else
-		{
-			res[i] = start;
-			start--;
-			i++;
-		}
-	}
-        return (res);
-}
-
-
-int	ft_abs(int n)
-{
-	if (n >= 0)
-		return (n);
-	else
-		return (-n);
-}
-int	*ft_range(int start, int end)
-{
-	int	i;
-	int	*tmp;
-	int	len;
-
-	i = 0;
-	len = ft_abs(end - start);
-	tmp = (int *)malloc(sizeof(int) * len + 1);
-	if (!tmp)
-		return (NULL);
-	while (i <= len)
-	{
-		if (start < end)
-		{
-			tmp[i] = start;
-			start++;
-			i++;
-		}
-		else
-		{
-			tmp[i] = start;
-			start--;
-			i++;
-		}
-	}
-	return (tmp);
-}
-*/
 #include <stdio.h>
 
 int main()
 {
-    int start = -5;
-    int end = 5;
+    int start = 50;
+    int end = -1;
     int *range = ft_range(start, end);
     if (range == NULL)
     {
@@ -128,11 +57,11 @@ int main()
     }
 
     // Assuming the end value is included in the array
-    for (int i = 0; range[i] != end; i++)
+    for (int i = 0; i < ft_abs(start - end) + 1; i++)
     {
         printf("%d ", range[i]);
     }
-    printf("%d\n", end); // Print the end value separately
+    printf("\n");
 
     // Free the allocated memory
     free(range);
