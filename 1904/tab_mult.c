@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_hex.c                                        :+:      :+:    :+:   */
+/*   tab_mult.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanhwang <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sanhwang <sanhwang@student.42luxembourg.l  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/19 15:03:35 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/04/19 20:19:37 by sanhwang         ###   ########.fr       */
+/*   Created: 2024/04/19 21:19:16 by sanhwang          #+#    #+#             */
+/*   Updated: 2024/04/19 21:39:21 by sanhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	print_hex(int n)
+char	putnbr(int n)
 {
 	char	*r;
 
-	r = "0123456789abcdef";
-	if (n > 16)
-		print_hex(n / 16);
-	write(1, &r[n % 16], 1);
+	r = "0123456789";
+	if (n > 9)
+		putnbr(n / 10);
+	write(1, &r[n % 10], 1);
 }
 
 int	ft_atoi(char *str)
@@ -32,17 +32,29 @@ int	ft_atoi(char *str)
 	while (str[i] >= '0' && str[i] <= '9')
 		r = r * 10 + str[i++] - '0';
 	return (r);
+
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-	int	nr;
-
-	if (ac == 2)
+	int	i;
+	int	j;
+	
+	if (ac != 2)
+		write(1, "\n", 1);
+	else
 	{
-		nr = ft_atoi(av[1]);
-		print_hex(nr);
+		i = 1;
+		j = ft_atoi(av[1]);
+		while (i < 10)
+		{
+			putnbr(i);
+			write(1, " x ", 3);
+			putnbr(j);
+			write(1, " = ", 3);
+			putnbr(i++ * j);
+			write(1, "\n", 1);
+		}
 	}
-	write(1, "\n", 1);
 	return (0);
 }
