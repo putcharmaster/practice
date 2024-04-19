@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanhwang <sanhwang@student.42luxembourg.l  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/18 17:40:48 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/04/19 08:10:27 by sanhwang         ###   ########.fr       */
+/*   Created: 2024/04/19 07:41:45 by sanhwang          #+#    #+#             */
+/*   Updated: 2024/04/19 08:09:52 by sanhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,14 @@
 int	ft_atoi(char *str)
 {
 	int	i;
+//	int	m;
 	int	r;
-	
+
 	i = 0;
 	r = 0;
-	while (str[i])
+	while (str[i] >= '0' && str[i] <= '9')
 		r = r * 10 + str[i++] - '0';
 	return (r);
-}
-
-void	putnbr(int n)
-{
-	char	r;
-
-	if (n > 9)
-		putnbr(n / 10);
-	r = n % 10 + '0';
-	write(1, &r, 1);
 }
 
 int	is_prime(int n)
@@ -41,7 +32,7 @@ int	is_prime(int n)
 	i = 2;
 	if (n <= 1)
 		return (0);
-	while (i <= n / i)
+	if (i * i <= n)
 	{
 		if (n % i == 0)
 			return (0);
@@ -50,21 +41,32 @@ int	is_prime(int n)
 	return (1);
 }
 
-#include <stdio.h>
+void	putnbr(int n)
+{
+	char	*r;
+
+	r = "0123456789";
+	if (n > 9)
+		putnbr(n / 10);
+	write(1, &r[n % 10], 1);
+}
+
 int	main(int ac, char **av)
 {
+	int	nbr;
+	int	sum;
+
+//	nbr = ft_atoi(av[1]);
+//	sum = 0;
 	if (ac == 2)
 	{
-		int	nr;
-		int	sum;
-
-		nr = ft_atoi(av[1]);
+		nbr = ft_atoi(av[1]);
 		sum = 0;
-		while (nr > 0)
+		while (nbr--)
 		{
-			if (is_prime(nr) != 0)
-				sum += nr;
-			nr--;
+			if (is_prime(nbr))
+				sum += nbr;
+			
 		}
 		putnbr(sum);
 	}
