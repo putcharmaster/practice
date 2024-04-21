@@ -1,72 +1,57 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_prime_sum.c                                    :+:      :+:    :+:   */
+/*   inter.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanhwang <sanhwang@student.42luxembourg.l  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/21 19:47:04 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/04/21 20:30:19 by sanhwang         ###   ########.fr       */
+/*   Created: 2024/04/22 01:07:07 by sanhwang          #+#    #+#             */
+/*   Updated: 2024/04/22 01:24:58 by sanhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int	ft_atoi(char *str)
-{
-	int	i;
-	int	r;
+//////////failed one
 
+
+int	ft_strchr(char *str, char c, int n)
+{
+	int i;
 	i = 0;
-	r = 0;
-	while (str[i] >= '0' && str[i] <= '9')
-		r = r * 10 + str[i++] - '0';
-	return (r);
-}
-
-int	is_prime(int n)
-{
-	int	i;
-
-	i = 2;
-	if (n <= 1)
-		return (0);
-	while (i <= n / i)
+	while (i < n)
 	{
-		if (n % i == 0)
+		if (str[i] == c)
 			return (0);
 		i++;
 	}
 	return (1);
 }
 
-void	putnbr(int n)
-{
-	char	r;
-
-	if (n > 9)
-		putnbr(n / 10);
-	r= n % 10 + '0';
-	write(1, &r, 1);
-}
-
 int	main(int ac, char **av)
 {
-	int	n;
-	int	sum;
+	int	i;
+	int	j;
 
-	if (ac == 2)
+	i = 0;
+	j = 0;
+	if (ac == 3)
 	{
-		sum = 0;
-		n = ft_atoi(av[1]);
-		while (n > 0)
+		while (av[1][i])
 		{
-			if (is_prime(n))
-				sum += n;
-			n--;
+			j = 0;
+			while (av[2][j])
+			{
+				if (av[2][j] == av[1][i])
+				{
+					if(ft_strchr(av[1], av[1][i], i))
+						write(1, &av[1][j], 1);
+					break ;
+				}
+				j++;
+			}	
 		}
-		putnbr(sum);
-
+		i++;
 	}
 	write(1, "\n", 1);
 	return (0);
