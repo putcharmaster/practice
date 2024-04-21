@@ -14,7 +14,7 @@
 
 int	ft_isspace(char c)
 {
-	return (c == ' ' || c == '\t' || c == '\t');
+	return (c == ' ' || c == '\t' || c == '\n');
 }
 
 int	count_words(char *str)

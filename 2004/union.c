@@ -34,7 +34,7 @@ int	main(int ac, char **av)
 
 	i = 0;
 	j = 0;
-	j = 0;
+	k = 0;
 	if (ac == 3)
 	{
 		while (av[1][i])
