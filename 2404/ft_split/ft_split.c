@@ -9,7 +9,7 @@
 /*   Updated: 2024/04/24 23:33:29 by sanhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+/*
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -59,8 +59,8 @@ char	**ft_split(char *str)
 	out[k] = NULL;
 	return (out);
 }
-
-/*
+*/
+///////////////////////////////this doesnt work
 #include <stdlib.h>
 
 int	dlimiter(char c)
