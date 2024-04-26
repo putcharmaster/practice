@@ -6,7 +6,7 @@
 /*   By: sanhwang <sanhwang@student.42luxembourg.l  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 18:14:03 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/04/24 23:33:29 by sanhwang         ###   ########.fr       */
+/*   Updated: 2024/04/25 13:03:11 by sanhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*
@@ -93,20 +93,30 @@ char	*woloc(char *str)
 {
 	char	*r;
 	int	i;
+	int	j;
+	int	k;
 
 	i = 0;
-	while (str[i])
+	k = 0;
+	while (str[i] && dlimiter(str[i]))
 		i++;
-	r = malloc(sizeof(char) * i + 1);
+	j = i;
+	while (str[j] && !dlimiter(str[j]))
+		j++;
+	r = malloc(sizeof(char) * (j - i + 1));
 	i = 0;
 	if (!r)
 		return (NULL);
-	while (str[i] && dlimiter(str[i]))
+	while (i < j)
 	{
-		r[i] = str[i];
-		i++;
+		r[k++] = str[i++];
 	}
-	r[i] = 0;
+//	while (str[i] && dlimiter(str[i]))
+//	{
+//		r[i] = str[i];
+//		i++;
+//	}
+	r[j - i] = 0;
 	return (r);
 }
 
@@ -134,4 +144,17 @@ char	**ft_split(char *str)
 	r[i] = NULL;
 	return (r);
 }
-*/
+
+#include <stdio.h>
+
+int             main(int ac, char **av)
+{
+        char **arr;
+
+        char *phrase = "   Hello,   Flavio\t Wuensche!  ";
+        arr = ft_split(phrase);
+        printf("%s\n", arr[0]);
+        printf("%s\n", arr[1]);
+        printf("%s\n", arr[2]);
+        printf("%s\n", arr[3]);
+}

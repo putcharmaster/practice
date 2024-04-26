@@ -6,12 +6,14 @@
 /*   By: sanhwang <sanhwang@student.42luxembourg.l  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 18:10:38 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/04/21 18:55:55 by sanhwang         ###   ########.fr       */
+/*   Updated: 2024/04/25 12:55:55 by sanhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <ctype.h>
+
+
 
 int	wordcount(char *str)
 {
