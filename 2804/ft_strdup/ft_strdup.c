@@ -1,45 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wdmatch.c                                          :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanhwang <sanhwang@student.42luxembourg.l  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/22 00:34:24 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/04/22 00:51:56 by sanhwang         ###   ########.fr       */
+/*   Created: 2024/04/28 23:31:43 by sanhwang          #+#    #+#             */
+/*   Updated: 2024/04/28 23:33:36 by sanhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdlib.h>
 
-void	ft_putchar(char *str)
+char	*ft_strdup(char *src)
 {
-	while (*str)
-		write(1, str++, 1);
-}
-
-int	main(int ac, char **av)
-{
+	char	*r;
 	int	i;
-	int	j;
-
 	i = 0;
-	j = 0;
-	if (ac == 3)
+	while (src[i])
+		i++;
+	r = malloc(sizeof(char) * i + 1);
+	i = 0;
+	while (src[i])
 	{
-		while (av[2][j])
-		{
-			if(av[2][j++] == av[1][i])
-				i++;
-			if(!av[1][i])
-			{
-				ft_putchar(av[1]);
-				write(1, "\n", 1);
-				return (0);
-			}
-			j++;
-		}
+		r[i] = src[i];
+		i++;
 	}
-	write(1, "\n", 1);
-	return (0);
+	r[i] = 0;
+	return (r);
 }

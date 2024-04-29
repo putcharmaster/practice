@@ -1,43 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wdmatch.c                                          :+:      :+:    :+:   */
+/*   expand_str.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanhwang <sanhwang@student.42luxembourg.l  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/22 00:34:24 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/04/22 00:51:56 by sanhwang         ###   ########.fr       */
+/*   Created: 2024/04/27 14:32:16 by sanhwang          #+#    #+#             */
+/*   Updated: 2024/04/27 14:50:59 by sanhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putchar(char *str)
-{
-	while (*str)
-		write(1, str++, 1);
-}
-
 int	main(int ac, char **av)
 {
 	int	i;
-	int	j;
+	int	flag;
 
 	i = 0;
-	j = 0;
-	if (ac == 3)
+	flag = 0;
+	if (ac == 2)
 	{
-		while (av[2][j])
+		if (!av[1][0])
 		{
-			if(av[2][j++] == av[1][i])
-				i++;
-			if(!av[1][i])
+			write(1, "\n", 1);
+			return (0);
+		}
+		while (av[1][i] < 33)
+			i++;
+		while (av[1][i])
+		{
+			if (av[1][i] == ' ' || av[1][i] == '\t')
+				flag = 1;
+			if (av[1][i] != ' ' && av[1][i] != '\t')
 			{
-				ft_putchar(av[1]);
-				write(1, "\n", 1);
-				return (0);
+				if (flag)
+					write(1, "   ", 3);
+				flag = 0;
+				write (1, &av[1][i], 1);
 			}
-			j++;
+			i++;
 		}
 	}
 	write(1, "\n", 1);

@@ -1,45 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wdmatch.c                                          :+:      :+:    :+:   */
+/*   str_capitalizer.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanhwang <sanhwang@student.42luxembourg.l  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/22 00:34:24 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/04/22 00:51:56 by sanhwang         ###   ########.fr       */
+/*   Created: 2024/04/27 21:04:48 by sanhwang          #+#    #+#             */
+/*   Updated: 2024/04/27 21:31:51 by sanhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putchar(char *str)
+void	capi(char *str)
 {
-	while (*str)
-		write(1, str++, 1);
+	int	i;
+
+	i = 0;
+	if (str[i] >= 'A' && str[i] <= 'Z')
+		write(1, &str[i++], 1);
+	while (str[i])
+	{
+		if (str[i] >= 'A' && str[i] <= 'Z')
+			str[i] = str[i] + 32;
+		if ((str[i] >= 'a' && str[i] <= 'z')
+			&& (i == 0 || str[i - 1] == ' ' || str[i - 1] == '\t'))
+			str[i] = str[i] - 32;
+		write(1, &str[i++], 1);
+	}
 }
 
 int	main(int ac, char **av)
 {
 	int	i;
-	int	j;
 
-	i = 0;
-	j = 0;
-	if (ac == 3)
+	i = 1;
+	if (ac > 1)
 	{
-		while (av[2][j])
+		while (i < ac)
 		{
-			if(av[2][j++] == av[1][i])
-				i++;
-			if(!av[1][i])
-			{
-				ft_putchar(av[1]);
+			capi(av[i]);
+			if (i < ac - 1)
 				write(1, "\n", 1);
-				return (0);
-			}
-			j++;
+			i++;
 		}
 	}
-	write(1, "\n", 1);
+		write(1, "\n", 1);
 	return (0);
 }

@@ -1,45 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wdmatch.c                                          :+:      :+:    :+:   */
+/*   paramsum.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanhwang <sanhwang@student.42luxembourg.l  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/22 00:34:24 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/04/22 00:51:56 by sanhwang         ###   ########.fr       */
+/*   Created: 2024/04/27 15:15:23 by sanhwang          #+#    #+#             */
+/*   Updated: 2024/04/27 15:19:27 by sanhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putchar(char *str)
+void	putnbr(int n)
 {
-	while (*str)
-		write(1, str++, 1);
+	char	r;
+	if (n > 9)
+		putnbr(n / 10);
+	r = n % 10 + '0';
+	write(1, &r, 1);
 }
 
 int	main(int ac, char **av)
-{
+{	
 	int	i;
-	int	j;
 
 	i = 0;
-	j = 0;
-	if (ac == 3)
+	if (ac > 1)
 	{
-		while (av[2][j])
-		{
-			if(av[2][j++] == av[1][i])
-				i++;
-			if(!av[1][i])
-			{
-				ft_putchar(av[1]);
-				write(1, "\n", 1);
-				return (0);
-			}
-			j++;
-		}
+		i = ac - 1;
+		putnbr(i);
+		write(1, "\n", 1);
 	}
-	write(1, "\n", 1);
+	else
+		write(1, "0\n", 2);
 	return (0);
 }

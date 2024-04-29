@@ -1,45 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wdmatch.c                                          :+:      :+:    :+:   */
+/*   ft_strcspn.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanhwang <sanhwang@student.42luxembourg.l  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/22 00:34:24 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/04/22 00:51:56 by sanhwang         ###   ########.fr       */
+/*   Created: 2024/04/28 13:11:54 by sanhwang          #+#    #+#             */
+/*   Updated: 2024/04/28 13:16:59 by sanhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stddef.h>
 
-void	ft_putchar(char *str)
-{
-	while (*str)
-		write(1, str++, 1);
-}
-
-int	main(int ac, char **av)
+size_t	ft_strcspn(const char *s, const char *reject)
 {
 	int	i;
 	int	j;
 
 	i = 0;
 	j = 0;
-	if (ac == 3)
+	while (s[i])
 	{
-		while (av[2][j])
+		while (reject[j])
 		{
-			if(av[2][j++] == av[1][i])
-				i++;
-			if(!av[1][i])
-			{
-				ft_putchar(av[1]);
-				write(1, "\n", 1);
-				return (0);
-			}
+			if (s[i] == reject[j])
+				return (i);
 			j++;
 		}
+		j = 0;
+		i++;
 	}
-	write(1, "\n", 1);
-	return (0);
+	return (i);
 }
+/*
+#include <string.h>
+#include <stdio.h>
+int	main()
+{
+	const char *s;
+	const char *r;
+
+	s = "skfjv";
+	r = "zzzzzzzzzzzzzzzzzzzzzzzzkz";
+	printf("original %ld\n\n",strcspn(s, r));
+	printf("ft_ %ld", ft_strcspn(s,r));
+}
+*/

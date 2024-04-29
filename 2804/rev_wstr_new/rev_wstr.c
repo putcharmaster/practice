@@ -1,44 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wdmatch.c                                          :+:      :+:    :+:   */
+/*   rev_wstr.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanhwang <sanhwang@student.42luxembourg.l  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/22 00:34:24 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/04/22 00:51:56 by sanhwang         ###   ########.fr       */
+/*   Created: 2024/04/28 13:36:21 by sanhwang          #+#    #+#             */
+/*   Updated: 2024/04/28 13:48:54 by sanhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putchar(char *str)
-{
-	while (*str)
-		write(1, str++, 1);
-}
-
 int	main(int ac, char **av)
 {
 	int	i;
-	int	j;
+	int	start;
+	int	end;
+	int	flag;
 
+	start = 0;
+	end = 0;
+	flag = 0;
 	i = 0;
-	j = 0;
-	if (ac == 3)
+	if (ac == 2)
 	{
-		while (av[2][j])
+		while (av[1][i])
+			i++;
+		while (i >= 0)
 		{
-			if(av[2][j++] == av[1][i])
-				i++;
-			if(!av[1][i])
-			{
-				ft_putchar(av[1]);
-				write(1, "\n", 1);
-				return (0);
-			}
-			j++;
+			while (av[1][i] < 33)
+				i--;
+			end = i;
+			while (av[1][i] > 32)
+				i--;
+			start = i + 1;
+			flag = start;
+			while (start <= end)
+				write(1, &av[1][start++], 1);
+			if (flag)
+				write(1, " ", 1);
 		}
+
 	}
 	write(1, "\n", 1);
 	return (0);

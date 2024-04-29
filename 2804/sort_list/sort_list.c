@@ -1,45 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wdmatch.c                                          :+:      :+:    :+:   */
+/*   sort_list.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanhwang <sanhwang@student.42luxembourg.l  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/22 00:34:24 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/04/22 00:51:56 by sanhwang         ###   ########.fr       */
+/*   Created: 2024/04/28 23:25:54 by sanhwang          #+#    #+#             */
+/*   Updated: 2024/04/28 23:29:32 by sanhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "list.h"
 
-void	ft_putchar(char *str)
+t_list	*sort_list(t_list *lst, int (*cmp)(int, int))
 {
-	while (*str)
-		write(1, str++, 1);
-}
+	int	tmp;
+	t_list	*start;
 
-int	main(int ac, char **av)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	if (ac == 3)
+	start = lst;
+	while (lst->next)
 	{
-		while (av[2][j])
+		if (((*cmp)(lst->data, lst->next->data))== 0)
 		{
-			if(av[2][j++] == av[1][i])
-				i++;
-			if(!av[1][i])
-			{
-				ft_putchar(av[1]);
-				write(1, "\n", 1);
-				return (0);
-			}
-			j++;
+			tmp = lst->data;
+			lst->data = lst->next->data;
+			lst->next->data = tmp;
+			lst = start;
 		}
+		else
+			lst = lst->next;
 	}
-	write(1, "\n", 1);
-	return (0);
+	lst = start;
+	return (lst);
 }

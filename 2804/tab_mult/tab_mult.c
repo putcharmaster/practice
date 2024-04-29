@@ -1,43 +1,59 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wdmatch.c                                          :+:      :+:    :+:   */
+/*   tab_mult.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanhwang <sanhwang@student.42luxembourg.l  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/22 00:34:24 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/04/22 00:51:56 by sanhwang         ###   ########.fr       */
+/*   Created: 2024/04/28 17:15:39 by sanhwang          #+#    #+#             */
+/*   Updated: 2024/04/28 17:27:03 by sanhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putchar(char *str)
+int	ft_atoi(char *str)
 {
-	while (*str)
-		write(1, str++, 1);
+	int	i;
+	int	r;
+
+	i = 0;
+	r = 0;
+	while (str[i] >= '0' && str[i] <= '9')
+		r = r*10+str[i++]-'0';
+	return (r);
+}
+
+void	putnbr(int n)
+{
+	char	r;
+
+	r = 0;
+	if (n > 9)
+		putnbr(n / 10);
+	r = r * 10 + (n % 10) + '0';
+	write(1, &r, 1);
 }
 
 int	main(int ac, char **av)
 {
+	int	n;
 	int	i;
-	int	j;
 
-	i = 0;
-	j = 0;
-	if (ac == 3)
+	if(ac == 2)
 	{
-		while (av[2][j])
+		n = ft_atoi(av[1]);
+		i = 1;
+		while (i < 10)
 		{
-			if(av[2][j++] == av[1][i])
-				i++;
-			if(!av[1][i])
-			{
-				ft_putchar(av[1]);
+			putnbr(i);
+			write(1, " x ", 3);
+			putnbr(n);
+			write(1, " = ", 3);
+			putnbr(i*n);
+			if(i < 9)
 				write(1, "\n", 1);
-				return (0);
-			}
-			j++;
+			i++;
 		}
 	}
 	write(1, "\n", 1);
