@@ -1,0 +1,57 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    sig.txt                                            :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: sanhwang <sanhwang@student.42luxembourg.l  +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/05/01 17:21:58 by sanhwang          #+#    #+#              #
+#    Updated: 2024/05/01 17:51:51 by sanhwang         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+https://www-uxsup.csx.cam.ac.uk/courses/moved.Building/signals.pdf
+
+1.SIGHUP =  sig   hang up
+2.SIGINT = interrupted   ctrl + c
+3.SIGQUIT
+4.SIGILL = illegal instruction.  the code that CPU cannot understand.
+5.SIGTRAP = used mainly from within debuggers ad program tracers
+6.SIGABRT = abort() function.  emergency stop.
+7.SIGBUS = an incorrect manner of attempt to access memory.  caused by alignment errors
+8.SIGFPE = Floating Point Exception (FPE) happended in the program
+9.SIGKILL = the process was killed by somebody wielding the KILL program.
+10.SIGUSR1 = free to use for whatever
+11.SIGSEGV= an attempt was made to access memory NOT allocated to the process.
+		often caused by reading off the end of arrays
+12.SIGUSR2= same as 10. left for programmers to do whatever they want.
+13.SIGPIPE= if a process is producing output that is being fed into another process
+		that consume it via a PIPE("producer | consumer") and the consumer dies
+		than the producer is sent this signal.
+14.SIGALRM=request a "wake up call" from the operating system by calling the ALARM() function.
+15.SIGTERM=the process was explicitly killed by somebody wielding the kill program
+16 //unused//
+17.SIGCHLD=previously created one or more child processes with the fork() function.
+18.SIGCONT=if paused by SIGSTOP(20) then sending SIGCONT to continues it
+19.SIGSTOP=paused by operating system. but it is preserved ready to be restated by SIGCONT
+		doesnt get any more CPU cycles until then
+20.SIGTSTP=the same as SIGSTOP.  cntrl+Z. it's short for terminal stop.(TSTP)
+21.SIGTTIN=when it tries to read input from its terminal.  typical response is to pause(SIGSTOP/SIFTSTP)
+		and wait for the SIGCONT
+22.SIGTTOU=when it tries to write output to its terminal.  typical response is SIGTTIN
+23.SIGURG= when urgent out of band data is sent to it
+24.SIGXCPU= signal to a process that has exceeded its CPU limit.  
+		cancel any CPU lomit with the shell command "ulimit -t unlimited"
+25.SIGXFSZ= a process that has tried to create a file above the file size limit
+		shel commant "ulimit -f unlimited" to prevent(?)
+26.SIGVTALRM= similar to SIGALRM.  SIGVTALRM is sent after a certain amout of time has been
+		spend running the process.
+27.SIGPROF= similar  SIGALRM / SIGVTALRM. is sent after a certain amout of time has been spent
+		running the process and running system code on behalf of the process.
+28.SIGWINCH= (mostly unsued these days)  when one of its windows was resized
+		maybe its short for Window Inch
+29.SIGIO=aka SIGPOLL. can arrange to have this signalwhen theres some input ready for it to process
+		or an output channel has become ready for writing.
+30.SIGPWR= a power management service to indicate that power has switched to a short term emergency 
+		power supply.  SIG power.
+31.SIGSYS= unused.
