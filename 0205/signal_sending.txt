@@ -1,0 +1,37 @@
+
+
+Signal .
+	asynchronously sent to a running program to notify it of some event.
+	signals are a sort of inter-process communication.
+
+signal is sent for the two reasons.
+	1. it has detected a system-wide event  like a devide-by-0 error or the end of a child process
+	2. a process requested a signal to be sent with the kill system call
+		(a process can send itself a signal in this way)
+
+for each process, the kernel maintains two bit vectors:
+		pending, blocked
+when it sends a signal, the kernel sets the bit to 1 in the destination process' pending bit vector.
+
+
+multitask is only an illusion.
+	->it constantly switches from one process to the next at lightning speed. "context switching"
+
+when the kernel resumes the execution of a process, 
+ex) after one of these context switches or after completing a system call, 
+	it checks the unblocked pending signal set. with the bitwise operation pending & -blocked.
+if that set is empty(usually) it moves on to the next instruction.
+		however,
+	if it's not empty, 	the kernel chooses a signal(typically the smallest) and
+				forces the process to react to it with an action.
+	this is the moment we call "RECEIVING" the signal.
+		the process will either;
+			ignore the signal,
+			terminate its own execution
+			intercept the signal by executing its own handler in response.
+once the signal received and one of these actions performed,
+	the kernel resets the corresponding bit in the pending bit vector 
+		and moves on to the following instruction
+			IF the program has not yet terminated.
+
+https://www.codequoi.com/en/sending-and-intercepting-a-signal-in-c/
