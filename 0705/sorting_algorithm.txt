@@ -1,0 +1,71 @@
+[quicksort]	a good default choice.  tends to be fast in practice
+[heapsort]	good choice if you can't tolerate a worst-case time complexity of O
+		or need low space consts.
+		The Linux kernel uses heapsort instead of quicksort.
+[merge sort]	stable sorting algorithm.
+		can be easily extended to handle data sets that cannot fit in RAM.
+		(where the bottleneck cost is reading and writing the input on disk,
+			not comparing and swapping individual items.
+[radix sort]	looks fast. but in practice, it tends to be slow
+[counting sort]	rare in practice.  good choice where there are small number of distict values
+					to be sorted.
+
+
+algorithm		stability
+**********************************
+bubble sort		stable
+insertion sort		stable
+selection sort		unstable
+merge sort		stable
+heap sort		unstable
+quicksort		unstable
+counting sort		stable
+radix sort		stable
+bucket sort		depends on the sorting algorithm used to sort the bucket.
+
+
+WHEN to use WHICH sorting algorithm
+
+bubble sort		1. Stability is important
+			2. list is small or elements are almost sorted
+
+seletion sort		1. stability isn't important
+			2. list is small and swapping two elements is costly
+			3. memory space is limited
+
+insertion sort		1. stability is important
+			2. list is small or elements are ALMOST SORTED
+			3. memory space is limited
+
+merge sort		1. stability is important
+			2. random access is very expensive compared to sequention access
+			3. random access isn't supported by a data structure like linked list
+
+heap sort		1. stability isn't important
+			2. memory space is limited
+			3. Guaranteed performance of O(log n) is expected.
+
+
+QUICKSORT is the STANDARD and is used as the default in ALMOST ALL SORTWARE LANGUAGES.
+
+
+what is O(n) :	O refers to the order of the function, or its growth rate
+			n is the length of the array to be sorted.
+
+Heap sort is usually considered slower than quick sort.
+
+	merge sort is a stable sort, which means it preserves the input order of 
+equal elements in the output, unlike standard quicksort and heap sort.
+
+bubble/insertion/selection sort run at O(n²),
+	which number of operation can take SIGNIFICANTLY LONGER than those listed
+	above rated at O(n log n) when dealing with really big data.
+		but there can be scenarios where the others are faster 
+			depending on the data.
+
+counting sort is much faster to write up and much easier to VISUALIZE and comprehend
+
+
+why do you need to know all this?
+	studying big O notation makes you grasp the very important concept of efficiency in your code.	so when you do work with huge data sets, you will have a good sense of where major slowdowns are likely to cause bottlenecks, and where more attention should be paid to get the largest improvements.  this is also called sensitivity analysis, and is an important part of solving problems and writing great software.
+
