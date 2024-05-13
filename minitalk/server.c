@@ -1,42 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server_bonus.c                                     :+:      :+:    :+:   */
+/*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanhwang <sanhwang@student.42luxembourg.l  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/04 16:20:31 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/05/07 14:38:07 by sanhwang         ###   ########.fr       */
+/*   Created: 2024/05/03 15:03:12 by sanhwang          #+#    #+#             */
+/*   Updated: 2024/05/06 12:28:35 by sanhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk_bonus.h"
+#include "minitalk.h"
 
-void	sig_handler(int sign, siginfo_t *info, void *context)
+void	simple_putnbr(int n)
 {
-	static int	c;
-	static int	bit;
-	static int	pid;
+	char	*r;
 
+	r = "0123456789";
+	if (n > 9)
+		simple_putnbr(n / 10);
+	write(1, &r[n % 10], 1);
+}
+
+void	sig_handler(int signal, siginfo_t *info, void *context)
+{
+	static int	i;
+	static int	bit;
+
+	(void)info;
 	(void)context;
-	if (pid == 0)
-		pid = info->si_pid;
-	if (sign == SIGUSR1)
-		c = c | (1 << bit);
+	if (signal == SIGUSR1)
+		i = i | (1 << bit);
 	bit++;
 	if (bit == 8)
 	{
+		write(1, &i, 1);
+		i = 0;
 		bit = 0;
-		if (!c)
-		{
-			kill (pid, SIGUSR1);
-			pid = 0;
-			return ;
-		}
-		write(1, &c, 1);
-		c = 0;
 	}
-	kill (info->si_pid, SIGUSR2);
 }
 
 int	main(void)
