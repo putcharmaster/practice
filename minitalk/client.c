@@ -6,7 +6,7 @@
 /*   By: sanhwang <sanhwang@student.42luxembourg.l  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 14:45:28 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/05/06 12:28:52 by sanhwang         ###   ########.fr       */
+/*   Updated: 2024/05/13 12:51:01 by sanhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,8 @@ int	main(int ac, char **av)
 			ft_ctob(pid, av[2][i++]);
 		ft_ctob(pid, '\0');
 	}
-	else if(ac == 2)
-	{
+	else if (ac == 2)
 		write(1, "ERROR: No msg to deliver to server.\n", 36);
-	}
 	else
 	{
 		write(1, "Error\n", 6);
