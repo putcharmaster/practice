@@ -6,11 +6,24 @@
 /*   By: sanhwang <sanhwang@student.42luxembourg.l  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 12:39:01 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/05/27 13:29:51 by sanhwang         ###   ########.fr       */
+/*   Updated: 2024/05/29 14:47:04 by sanhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
+
+int     is_sorted(t_stack *a)
+{
+        if (a == NULL)
+                return (1);
+        while (a->next)
+        {
+                if ((a->value) > (a->next->value))
+                        return (0);
+                a = a->next;
+        }
+        return (1);
+}
 
 int	stack_size(t_stack **head)
 {
@@ -41,14 +54,6 @@ void	make_three_and_sort(t_stack **a_stack, t_stack **b_stack)
 		count--;
 	}
 }
-
-3
-5
-4
-
-5
-3
-4
 
 int	find_mean(t_stack **head)
 {

@@ -1,34 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanhwang <sanhwang@student.42luxembourg.l  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/21 14:40:30 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/05/28 19:18:59 by sanhwang         ###   ########.fr       */
+/*   Created: 2024/05/28 19:19:59 by sanhwang          #+#    #+#             */
+/*   Updated: 2024/05/28 19:22:54 by sanhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "push_swap.h"
 
-# include <unistd.h>
-
-typedef struct s_stack
+int	main(int ac, char **av)
 {
-	int				value;
-	int				index;
-	struct s_stack	*next;
-}	t_stack;
+	t_list	*a;
+	t_list	*b;
 
-int	valid_input(int ac, char **av);
-void	split_av(char **av, t_stack **a_head);
-void	add_n_to_back(n, a_head);
-void	free_av();
-int	is_sorted();
-void	algo();
-void	free_stack();
-int	ft_atoi();
-
-#endif
+	a = NULL;
+	b = NULL;
+	if (ac == 1)
+}
