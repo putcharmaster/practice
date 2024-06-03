@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+	/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   algo.c                                             :+:      :+:    :+:   */
@@ -6,7 +6,7 @@
 /*   By: sanhwang <sanhwang@student.42luxembourg.l  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 12:23:49 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/05/25 12:38:50 by sanhwang         ###   ########.fr       */
+/*   Updated: 2024/06/02 15:01:33 by sanhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,25 @@ int	avcount(t_stack *a)
 	return (i);
 }
 
+void	sort_b(t_stack **a, t_stack **b)
+{
+	
+}
+
 void	algo(t_stack **a, t_stack **b)
 {
 	if ((!is_sorted(*a)) || (*b) != NULL)
 	{
-		if (avcount(*a) > 5)
-			make_five(a, b);
-		if (avcount(*a) <= 5 && !is_sorted(*a))
-			sort_five(a, b);
-		while ((*b) != NULL)
-		{
-			bf_on_top(a, b);
-			pa(a, b);
-		}
+		if (avcount(*a) > 3)
+			pb(a, b);
+		if (avcount(*a) > 3)
+			pb(a, b);
+		//get max and min of *b
+		//if a_head is min or max, replace and push.
+		//
+		if(avcount(*a) > 3)
+			sort_b(a, b);	
 	}
+	if (!is_sorted(a))
+		sort_three(a);
 }
