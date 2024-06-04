@@ -22,13 +22,16 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
-int	valid_input(int ac, char **av);
 void	split_av(char **av, t_stack **a_head);
-void	add_n_to_back(n, a_head);
-void	free_av();
-int	is_sorted();
-void	algo();
-void	free_stack();
-int	ft_atoi();
+void	add_n_to_back(t_stack **a_head, int value);
+void	free_av(char **av);
+void	algo(t_stack **a, t_stack **b);
+void	free_stack(t_stack *head);
+int	is_sorted(t_stack *a);
+int	is_digit(char c);
+int	valid_input(int ac, char **av);
+int	ft_atol(char *str);
+int	out_of_int(long n);
+int	ft_lstsize(t_stack *a_head);
 
 #endif

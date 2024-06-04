@@ -24,6 +24,16 @@ int	is_sorted(t_stack *a)
 	}
 	return (1);
 }
+int	is_rev_sorted(t_stack *b)
+{
+	while (b->next)
+	{
+		if ((b->value) < (b->next->value))
+			return (0);
+		b = b->next;
+	}
+	return (1);
+}
 
 int	avcount(t_stack *a)
 {

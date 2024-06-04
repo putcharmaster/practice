@@ -23,7 +23,7 @@ int	valid_input(int ac, char **av)
 	{
 		while (av[i][j])
 		{
-			if (av[i][j] == '-' || av[i][j] == '+')
+			if (av[i][j] == '-' || av[i][j] == '+' || av[i][j] == ' ')
 				j++;
 			if (!is_digit(av[i][j]))
 				return (0);
@@ -32,6 +32,11 @@ int	valid_input(int ac, char **av)
 		i++;
 	}
 	return (1);
+}
+
+int	is_digit(char c)
+{
+	return (c >= '0' && c <= '9');
 }
 
 int	is_sorted(t_stack *a)
@@ -57,7 +62,7 @@ void	free_av(char **av)
 	free(av);
 }
 
-void	add_n_to_back(int value, t_stack **a_head)
+void	add_n_to_back(t_stack **a_head, int value)
 {
 	t_stack	*new;
 	t_stack	*last;
@@ -93,16 +98,11 @@ int	ft_lstsize(t_stack *a_head)
 	return (i);
 }
 
-void	algo(t_stack **a_head, t_stack **b_head)
-{
-	
-}
-
 void	split_av(char **av, t_stack **a_head)
 {
 	int	i;
 	int	j;
-	int	n;
+	long	n;
 	char	**split;
 
 	i = 1;
@@ -114,8 +114,13 @@ void	split_av(char **av, t_stack **a_head)
 		j = 0;
 		while (split[j])
 		{
-			n = ft_atoi(split[j]);
-			add_n_to_back(n, a_head);
+			n = ft_atol(split[j]);
+			if (out_of_int(n))
+			{
+				write(2, "Error\n", 6);
+				return (1);
+			}
+			add_n_to_back(a_head, n);
 			j++;
 		}
 		free_av(split);
@@ -133,9 +138,10 @@ int	main(int ac, char **av)
 	if (ac < 2 || !valid_input(ac, av))
 	{
 		write(2, "Error\n", 6);
-		return (0);
+		return (1);
 	}
 	split_av(av, &a);
+	//check 
 	if (is_sorted(a))
 		return (0);
 	algo(&a, &b);
