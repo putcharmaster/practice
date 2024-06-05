@@ -1,41 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   extra.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanhwang <sanhwang@student.42luxembourg.l  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/25 00:09:12 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/05/25 12:15:46 by sanhwang         ###   ########.fr       */
+/*   Created: 2024/06/05 18:57:35 by sanhwang          #+#    #+#             */
+/*   Updated: 2024/06/05 18:57:36 by sanhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-void	push(t_stack **src_top, t_stack **dst_top)
+size_t ft_strlen(const char *str)
 {
-	t_stack *tmp;
+    int i;
 
-	if (*src_top == NULL)
-		return ;
-	tmp = *src_top;
-	*src_top = (*src_top)->next;
-	tmp->next = *dst_top;
-	*dst_top = tmp;
+    i = 0;
+    while (str[i])
+        i++;
+    return (i);
 }
 
-void	pa(t_stack **b, t_stack **a)
+size_t  ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	if (!*b)
-		return ;
-	push(b, a);
-	write(1, "pa\n", 3);
-}
+    size_t  i;
 
-void	pb(t_stack **a, t_stack **b)
-{
-	if (!*a)
-		return ;
-	push(a, b);
-	write(1, "pb\n", 3);
+    if (size == 0)
+        return (ft_strlen(src));
+    i = 0;
+    while (src[i] && i < (size - 1))
+    {
+        dst[i] = src[i];
+        i++;
+    }
+    dst[i] = 0;
+    return (ft_strlen(src));
 }

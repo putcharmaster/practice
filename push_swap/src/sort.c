@@ -43,7 +43,7 @@ int	stack_size(t_stack **head)
 void	make_three_and_sort(t_stack **a_stack, t_stack **b_stack)
 {
 	int	count;
-	int	mean;
+	//int	mean;
 	t_stack	*a;
 
 	a = *a_stack;

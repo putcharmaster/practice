@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include <unistd.h>
+# include <stdlib.h>
 
 typedef struct s_stack
 {
@@ -22,16 +23,40 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
+size_t	ft_strlen(const char *str);
+size_t	ft_strlcpy(char *dst, const char *src, size_t size);
+char	**ft_split(const char *s, char c);
 void	split_av(char **av, t_stack **a_head);
 void	add_n_to_back(t_stack **a_head, int value);
 void	free_av(char **av);
 void	algo(t_stack **a, t_stack **b);
 void	free_stack(t_stack *head);
+void	swap(t_stack **stack);
+void	sa(t_stack **a);
+void	sb(t_stack **b);
+void	ss(t_stack **a, t_stack **b);
+void	rotate(t_stack **head);
+void	ra(t_stack **a);
+void	rb(t_stack **b);
+void	rr(t_stack **a, t_stack **b);
+void	rev_rotate(t_stack **head);
+void	rra(t_stack **a);
+void	rrb(t_stack **b);
+void	rrr(t_stack **a, t_stack **b);
+void	push(t_stack **src_top, t_stack **dst_top);
+void	pa(t_stack **b, t_stack **a);
+void	pb(t_stack **a, t_stack **b);
+void	make_three_and_sort(t_stack **a_stack, t_stack **b_stack);
 int	is_sorted(t_stack *a);
 int	is_digit(char c);
 int	valid_input(int ac, char **av);
 int	ft_atol(char *str);
 int	out_of_int(long n);
 int	ft_lstsize(t_stack *a_head);
+int	stack_size(t_stack **head); // do i need this?
+int	find_min_value(t_stack *stack);
+int	find_max_value(t_stack *stack);
+int	find_mean_value(t_stack *stack);
+int	find_mean(t_stack **head); // do i need this?
 
 #endif

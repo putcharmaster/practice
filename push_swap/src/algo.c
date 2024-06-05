@@ -50,10 +50,8 @@ int	avcount(t_stack *a)
 	return (i);
 }
 
-void	sort_b(t_stack **a, t_stack **b)
-{
-	
-}
+//void	sort_b(t_stack **a, t_stack **b)
+
 
 void	algo(t_stack **a, t_stack **b)
 {
@@ -66,9 +64,9 @@ void	algo(t_stack **a, t_stack **b)
 		//get max and min of *b
 		//if a_head is min or max, replace and push.
 		//
-		if(avcount(*a) > 3)
-			sort_b(a, b);	
+		while(avcount(*a) > 3)
+			pb(a, b);	
 	}
-	if (!is_sorted(a))
-		sort_three(a);
+	//if (!is_sorted(*a))
+	//	sort_three(a);
 }

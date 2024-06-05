@@ -34,20 +34,18 @@ int	valid_input(int ac, char **av)
 	return (1);
 }
 
-int	is_digit(char c)
-{
-	return (c >= '0' && c <= '9');
-}
-
 int	is_sorted(t_stack *a)
 {
-	if (a = NULL)
+	t_stack *tmp;
+
+	if (a == NULL)
 		return (1);
-	while (a->next)
+	tmp = a;
+	while (tmp->next)
 	{
-		if ((a->value) > (a->next->value))
+		if ((tmp->value) > (tmp->next->value))
 			return (0);
-		a = a->next;
+		a = tmp->next;
 	}
 	return (1);
 }
@@ -102,7 +100,8 @@ void	split_av(char **av, t_stack **a_head)
 {
 	int	i;
 	int	j;
-	long	n;
+	long	l;
+
 	char	**split;
 
 	i = 1;
@@ -114,13 +113,13 @@ void	split_av(char **av, t_stack **a_head)
 		j = 0;
 		while (split[j])
 		{
-			n = ft_atol(split[j]);
-			if (out_of_int(n))
+			l = ft_atol(split[j]);
+			if (out_of_int(l))
 			{
 				write(2, "Error\n", 6);
-				return (1);
+				return ;
 			}
-			add_n_to_back(a_head, n);
+			add_n_to_back(a_head, l);
 			j++;
 		}
 		free_av(split);
