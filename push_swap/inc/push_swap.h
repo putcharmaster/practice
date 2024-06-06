@@ -15,6 +15,7 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <limits.h>
 
 typedef struct s_stack
 {
@@ -26,7 +27,8 @@ typedef struct s_stack
 size_t	ft_strlen(const char *str);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 char	**ft_split(const char *s, char c);
-void	split_av(char **av, t_stack **a_head);
+int		print_error(void);
+void	make_stack(char **av, t_stack **a_head);
 void	add_n_to_back(t_stack **a_head, int value);
 void	free_av(char **av);
 void	algo(t_stack **a, t_stack **b);
@@ -46,17 +48,24 @@ void	rrr(t_stack **a, t_stack **b);
 void	push(t_stack **src_top, t_stack **dst_top);
 void	pa(t_stack **b, t_stack **a);
 void	pb(t_stack **a, t_stack **b);
-void	make_three_and_sort(t_stack **a_stack, t_stack **b_stack);
+void	make_three_and_sort(t_stack **a, t_stack **b, int max, int min);
+void	sort_three(t_stack **a, int max, int min);
+void	sort_four(t_stack **a, t_stack **b, int max, int min);
+int	int_range(char **av);
+int	is_dup(t_stack *a);
 int	is_sorted(t_stack *a);
 int	is_digit(char c);
+int	is_sign(char c);
 int	valid_input(int ac, char **av);
-int	ft_atol(char *str);
-int	out_of_int(long n);
+long	ft_atol(char *str);
+int		ft_atoi(char *str);
+int	out_of_int(char **split);
 int	ft_lstsize(t_stack *a_head);
-int	stack_size(t_stack **head); // do i need this?
+int	stack_size(t_stack *head); // do i need this?
 int	find_min_value(t_stack *stack);
 int	find_max_value(t_stack *stack);
 int	find_mean_value(t_stack *stack);
 int	find_mean(t_stack **head); // do i need this?
+
 
 #endif

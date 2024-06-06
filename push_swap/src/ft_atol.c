@@ -1,13 +1,11 @@
-int     out_of_int(long n)
-{
-    return (n < -2147483648 || n > 2147483647);
-}
+#include "../inc/push_swap.h"
+
 
 long    ft_atol(char *str)
 {
     int i;
     int m;
-    int r;
+    long r;
 
     i = 0;
     m = 1;

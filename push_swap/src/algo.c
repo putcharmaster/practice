@@ -12,7 +12,7 @@
 
 #include "../inc/push_swap.h"
 
-int	is_sorted(t_stack *a)
+int	ft_issorted(t_stack *a)
 {
 	if (a == NULL)
 		return (1);
@@ -52,20 +52,64 @@ int	avcount(t_stack *a)
 
 //void	sort_b(t_stack **a, t_stack **b)
 
+void	sort_three(t_stack **a, int max, int min)
+{
+	if ((*a)->value != min && (*a)->next->value == max)
+		rra(a);
+	else if ((*a)->value == min)
+	{
+		sa(a);
+		ra(a);
+	}
+	else if ((*a)->value == max && (*a)->next->value == min)
+		ra(a);
+	else if ((*a)->value == max && (*a)->next->next->value == min)
+	{
+		ra(a);
+		sa(a);
+	}
+	else if ((*a)->value != min && (*a)->next->next->value == max)
+		sa(a);
+}
+
+void	sort_four(t_stack **a, t_stack **b, int max, int min)
+{
+	if ((*a)->value == min || (*a)->value == max)
+	{
+		pb(a, b);
+		sort_three(a, max, min);
+		pa(b, a);
+		if (!is_sorted(*a))
+			ra(a);
+	}
+	else if ((*a)->next->value == min || (*a)->next->value == max) 
+	{
+		sa(a);
+		pb(a, b);
+		sort_three(a, max, min);
+		pa(b, a);
+		if (!is_sorted(*a))
+			ra(a);
+	}
+}
 
 void	algo(t_stack **a, t_stack **b)
 {
+	int	max;
+	int	min;
+
+	max = find_max_value(*a);
+	min = find_min_value(*a);
 	if ((!is_sorted(*a)) || (*b) != NULL)
 	{
-		if (avcount(*a) > 3)
-			pb(a, b);
-		if (avcount(*a) > 3)
-			pb(a, b);
-		//get max and min of *b
-		//if a_head is min or max, replace and push.
-		//
-		while(avcount(*a) > 3)
-			pb(a, b);	
+		if (stack_size(*a) == 2)
+			ra(a);
+		else if (stack_size(*a) == 3)
+			sort_three(a, max, min);
+		else if (stack_size(*a) == 4)
+			sort_four(a, b, max, min);
+		else // (stack_size(*a) > 3)
+			make_three_and_sort(a, b, max, min);	
 	}
 	//if (!is_sorted(*a))
 	//	sort_three(a);

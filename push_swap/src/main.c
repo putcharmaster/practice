@@ -12,54 +12,6 @@
 
 #include "../inc/push_swap.h"
 
-int	valid_input(int ac, char **av)
-{
-	int	i;
-	int	j;
-
-	i = 1;
-	j = 0;
-	while (i < ac)
-	{
-		while (av[i][j])
-		{
-			if (av[i][j] == '-' || av[i][j] == '+' || av[i][j] == ' ')
-				j++;
-			if (!is_digit(av[i][j]))
-				return (0);
-			j++;
-		}
-		i++;
-	}
-	return (1);
-}
-
-int	is_sorted(t_stack *a)
-{
-	t_stack *tmp;
-
-	if (a == NULL)
-		return (1);
-	tmp = a;
-	while (tmp->next)
-	{
-		if ((tmp->value) > (tmp->next->value))
-			return (0);
-		a = tmp->next;
-	}
-	return (1);
-}
-
-void	free_av(char **av)
-{
-	int	i;
-
-	i = 0;
-	while (av[i])
-		free(av[i++]);
-	free(av);
-}
-
 void	add_n_to_back(t_stack **a_head, int value)
 {
 	t_stack	*new;
@@ -96,11 +48,11 @@ int	ft_lstsize(t_stack *a_head)
 	return (i);
 }
 
-void	split_av(char **av, t_stack **a_head)
+void	make_stack(char **av, t_stack **a_head)
 {
 	int	i;
 	int	j;
-	long	l;
+	int		n;
 
 	char	**split;
 
@@ -113,18 +65,33 @@ void	split_av(char **av, t_stack **a_head)
 		j = 0;
 		while (split[j])
 		{
-			l = ft_atol(split[j]);
-			if (out_of_int(l))
-			{
-				write(2, "Error\n", 6);
-				return ;
-			}
-			add_n_to_back(a_head, l);
+			n = ft_atol(split[j]);
+			add_n_to_back(a_head, n);
 			j++;
 		}
 		free_av(split);
 		i++;
 	}
+}
+
+int		is_dup(t_stack *a)
+{
+	t_stack	*current;
+	t_stack *runner;
+
+	current = a;
+	while (current)
+	{
+		runner = current->next;
+		while (runner)
+		{
+			if (runner->value == current->value)
+				return (1);
+			runner = runner->next;
+		}
+		current = current->next;
+	}
+	return (0);
 }
 
 int	main(int ac, char **av)
@@ -136,13 +103,21 @@ int	main(int ac, char **av)
 	b = NULL;
 	if (ac < 2 || !valid_input(ac, av))
 	{
-		write(2, "Error\n", 6);
+		print_error();
 		return (1);
 	}
-	split_av(av, &a);
-	//check 
+	make_stack(av, &a);
+	if (is_dup(a))
+	{
+		print_error();
+		free_stack(a);
+		return (1);
+	}
 	if (is_sorted(a))
+	{
+		free_stack(a);
 		return (0);
+	}
 	algo(&a, &b);
 	free_stack(a);
 	return (0);

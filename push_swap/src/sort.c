@@ -14,24 +14,27 @@
 
 int     is_sorted(t_stack *a)
 {
+	t_stack *tmp;
+
+	tmp = a;
         if (a == NULL)
                 return (1);
-        while (a->next)
+        while (tmp->next)
         {
-                if ((a->value) > (a->next->value))
+                if ((tmp->value) > (tmp->next->value))
                         return (0);
-                a = a->next;
+                tmp = tmp->next;
         }
         return (1);
 }
 
-int	stack_size(t_stack **head)
+int	stack_size(t_stack *head)
 {
 	int	i;
 	t_stack *tmp;
 
 	i = 0;
-	tmp = *head;
+	tmp = head;
 	while (tmp)
 	{
 		i++;
@@ -40,18 +43,21 @@ int	stack_size(t_stack **head)
 	return (i);
 }
 
-void	make_three_and_sort(t_stack **a_stack, t_stack **b_stack)
+void	make_three_and_sort(t_stack **a, t_stack **b, int max, int min)
 {
 	int	count;
-	//int	mean;
-	t_stack	*a;
 
-	a = *a_stack;
-	count = stack_size(&a);
+	count = stack_size(*a);
 	while (count > 3)
 	{
-		pb(a_stack, b_stack);
+		pb(a, b);
 		count--;
+	}
+	sort_three(a, max, min);
+	while (count <= stack_size(*a))
+	{
+		pa(b, a);
+		count++;
 	}
 }
 
