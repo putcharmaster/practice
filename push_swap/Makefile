@@ -15,7 +15,7 @@ CFLAGS = -Wall -Wextra -Werror
 NAME = push_swap
 SRCS = ./src/main.c ./src/input.c ./src/sort.c ./src/rotate.c ./src/rev_rotate.c\
        ./src/push.c ./src/ft_atol.c ./src/free.c ./src/finder.c ./src/algo.c\
-	   ./src/extra.c ./src/ft_split.c ./src/error.c ./src/swap.c
+	   ./src/extra.c ./src/ft_split.c ./src/error.c ./src/swap.c ./src/move.c
 OBJS = $(SRCS:.c=.o)
 
 # Clean command
