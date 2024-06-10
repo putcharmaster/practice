@@ -13,13 +13,34 @@
 
 #include "../inc/push_swap.h"
 
+#include <stdio.h>
+
 void    move(t_stack **a, t_stack **b)
 {
     int min;
+    int index;
+    int a_size;
+    int b_size;
 
-    min = find_min_value(*a);
-    //find index of value;
-
+    a_size = stack_size(*a);
+  
+    while (a_size--)
+    {
+        min = find_min_value(*a);
+        index = find_index(*a, min);
+        move_to_top(a, index);
+        pb(a, b);
+    }
+      b_size = stack_size(*b);
+      
+    //erase this  
+      printf("b_size: %d\n", b_size);
+    
+    
+    while (b_size--)
+    {
+        pa(a, b);
+    }
 }
 
 int     find_index(t_stack *a, int min)
@@ -34,8 +55,9 @@ int     find_index(t_stack *a, int min)
         index++;
         a = a->next;
     }
+    return (-1);
 }
-
+/*
 int    move_to_top_cost(t_stack **a, int index)
 {
     int size;
@@ -46,16 +68,19 @@ int    move_to_top_cost(t_stack **a, int index)
     else
         return (size - index); // rra
 }
+*/
 
 void    move_to_top(t_stack **a, int index)
 {
     int size;
-    size = stack_size(a);
+    size = stack_size(*a);
 
-    if (index < size / 2)
+    if (index <= size / 2)
         while (index--)
             ra(a);
     else
-        while (index--)
+    {   //index = size - index;
+        while (index++ < size)
             rra(a);
+    }
 }

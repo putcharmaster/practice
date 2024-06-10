@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanhwang <sanhwang@student.42luxembourg.l  +#+  +:+       +#+        */
+/*   By: sangha <sangha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 14:40:30 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/05/28 19:18:59 by sanhwang         ###   ########.fr       */
+/*   Updated: 2024/06/10 21:41:25 by sangha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
+void    move(t_stack **a, t_stack **b);
+int     find_index(t_stack *a, int min);
+void    move_to_top(t_stack **a, int index);
 size_t	ft_strlen(const char *str);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 char	**ft_split(const char *s, char c);

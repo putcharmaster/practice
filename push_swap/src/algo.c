@@ -102,14 +102,33 @@ void	algo(t_stack **a, t_stack **b)
 	min = find_min_value(*a);
 	if ((!is_sorted(*a)) || (*b) != NULL)
 	{
-		if (stack_size(*a) == 2)
+		if (stack_size(*a) == 1)
+			return ;
+		else if (stack_size(*a) == 2)
 			ra(a);
 		else if (stack_size(*a) == 3)
 			sort_three(a, max, min);
-		else if (stack_size(*a) == 4)
-			sort_four(a, b, max, min);
+		//else if (stack_size(*a) == 4)
+			//sort_four(a, b, max, min);
 		else // (stack_size(*a) > 3)
-			make_three_and_sort(a, b, max, min);	
+		{
+				move(a, b);
+
+			/*
+			while (stack_size(*a) > 3)
+			{
+				if ((*a)->value == min || (*a)->value == max)
+				{
+					pb(a, b);
+					if ((*b)->value < find_min_value(*b))
+						rb(b);
+				}
+				else
+					ra(a);
+			}
+			*/
+		}
+			//make_three_and_sort(a, b, max, min);	
 	}
 	//if (!is_sorted(*a))
 	//	sort_three(a);
