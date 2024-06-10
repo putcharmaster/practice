@@ -24,23 +24,24 @@ void    move(t_stack **a, t_stack **b)
 
     a_size = stack_size(*a);
   
-    while (a_size--)
+    while (a_size-- > 3)
     {
         min = find_min_value(*a);
         index = find_index(*a, min);
         move_to_top(a, index);
-        pb(a, b);
+        if (!is_sorted(*a))
+            pb(a, b);
     }
+    if (!is_sorted(*a))
+        sort_three(a, find_max_value(*a), find_min_value(*a));
       b_size = stack_size(*b);
       
     //erase this  
-      printf("b_size: %d\n", b_size);
+      //printf("b_size: %d\n", b_size);
     
     
-    while (b_size--)
-    {
+    while (b_size--)   
         pa(a, b);
-    }
 }
 
 int     find_index(t_stack *a, int min)
