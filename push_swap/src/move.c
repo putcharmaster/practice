@@ -100,17 +100,3 @@ void    move_to_top(t_stack **stack, int index, char stack_id)
     }
 }
 
-void    move_to_top_b(t_stack **stack, int index)
-{
-    int size;
-    size = stack_size(*stack);
-
-    if (index <= size / 2)
-        while (index--)
-            rb(stack);
-    else
-    {   //index = size - index;
-        while (index++ < size)
-            rrb(stack);
-    }
-}
