@@ -13,55 +13,55 @@
 
 #include "../inc/push_swap.h"
 
-#include <stdio.h>
 
 void    move(t_stack **a, t_stack **b)
 {
     int min;
+    //int max;
     int index;
     int a_size;
     int b_size;
-
-    a_size = stack_size(*a);
   
+    a_size = stack_size(*a);
     while (a_size--)
     {
         min = find_min_value(*a);
         index = find_index(*a, min);
-        move_to_top(a, index);
-        if (!is_sorted(*a))
-            pb(a, b);
+        move_to_top(a, index, 'a');
+        pb(a, b);
     }
-    /*
-    if (is_sorted(*a))
-        break ;
-    els
-        sort_three(a, find_max_value(*a), find_min_value(*a));
-        */
-      b_size = stack_size(*b);
-      
-    //erase this  
-      //printf("b_size: %d\n", b_size);
-    
-    
+    b_size = stack_size(*b);
     while (b_size--)   
-        pa(a, b);
+        pa(b, a);
 }
 
-int     find_index(t_stack *a, int min)
+/*
+void    move(t_stack **a, t_stack **b)
 {
+    //int min;
+    int max;
     int index;
-
-    index = 0;
-    while (a)
+    int a_size;
+    int b_size;
+  
+    a_size = stack_size(*a);
+    while (a_size--)
     {
-        if (a->value == min)
-            return (index);
-        index++;
-        a = a->next;
+     //   min = find_min_value(*a);
+      //  index = find_index(*a, min);
+      //  move_to_top(a, index);
+        pb(a, b);
     }
-    return (-1);
-}
+    b_size = stack_size(*b);
+    while (b_size--)
+    {
+        max = find_max_value(*b);
+        index = find_index(*b, max);
+        move_to_top(b, index, 'b');
+        pa(b,a);
+    }
+}*/
+
 /*
 int    move_to_top_cost(t_stack **a, int index)
 {
@@ -75,17 +75,42 @@ int    move_to_top_cost(t_stack **a, int index)
 }
 */
 
-void    move_to_top(t_stack **a, int index)
+void    move_to_top(t_stack **stack, int index, char stack_id)
 {
     int size;
-    size = stack_size(*a);
+    size = stack_size(*stack);
 
     if (index <= size / 2)
         while (index--)
-            ra(a);
+        {
+            if (stack_id == 'a')
+                ra(stack);
+            else
+                rb(stack);
+        }
     else
     {   //index = size - index;
         while (index++ < size)
-            rra(a);
+        {
+            if (stack_id == 'a')
+                rra(stack);
+            else
+                rrb(stack);
+        }
+    }
+}
+
+void    move_to_top_b(t_stack **stack, int index)
+{
+    int size;
+    size = stack_size(*stack);
+
+    if (index <= size / 2)
+        while (index--)
+            rb(stack);
+    else
+    {   //index = size - index;
+        while (index++ < size)
+            rrb(stack);
     }
 }

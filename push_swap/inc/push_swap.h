@@ -25,8 +25,9 @@ typedef struct s_stack
 }	t_stack;
 
 void    move(t_stack **a, t_stack **b);
-int     find_index(t_stack *a, int min);
-void    move_to_top(t_stack **a, int index);
+int     find_index(t_stack *stack, int value);
+void    move_to_top(t_stack **stack, int index, char stack_id);
+void    move_to_top_b(t_stack **stack, int index);
 size_t	ft_strlen(const char *str);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 char	**ft_split(const char *s, char c);

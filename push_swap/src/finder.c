@@ -12,6 +12,21 @@
 
 #include "../inc/push_swap.h"
 
+int     find_index(t_stack *stack, int value)
+{
+    int index;
+
+    index = 0;
+    while (stack)
+    {
+        if (stack->value == value)
+            return (index);
+        index++;
+        stack = stack->next;
+    }
+    return (-1);
+}
+
 int	find_min_value(t_stack *stack)
 {
 	int	min;

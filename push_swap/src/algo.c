@@ -74,7 +74,7 @@ void	sort_three(t_stack **a, int max, int min)
 
 void	sort_four(t_stack **a, t_stack **b, int max, int min)
 {
-	if ((*a)->value == min || (*a)->value == max)
+	if ((*a)->value == min)
 	{
 		pb(a, b);
 		sort_three(a, max, min);
@@ -82,7 +82,7 @@ void	sort_four(t_stack **a, t_stack **b, int max, int min)
 		if (!is_sorted(*a))
 			ra(a);
 	}
-	else if ((*a)->next->value == min || (*a)->next->value == max) 
+	else if ((*a)->next->value == min) 
 	{
 		sa(a);
 		pb(a, b);
@@ -90,6 +90,10 @@ void	sort_four(t_stack **a, t_stack **b, int max, int min)
 		pa(b, a);
 		if (!is_sorted(*a))
 			ra(a);
+	}
+	else
+	{
+		move(a, b);
 	}
 }
 
@@ -100,7 +104,8 @@ void	algo(t_stack **a, t_stack **b)
 
 	max = find_max_value(*a);
 	min = find_min_value(*a);
-	if ((!is_sorted(*a)) || (*b) != NULL)
+	if (*a && !is_sorted(*a))
+	//if (*a)) || (*b) != NULL)
 	{
 		if (stack_size(*a) == 1)
 			return ;
@@ -109,7 +114,7 @@ void	algo(t_stack **a, t_stack **b)
 		else if (stack_size(*a) == 3)
 			sort_three(a, max, min);
 		//else if (stack_size(*a) == 4)
-			//sort_four(a, b, max, min);
+		//	sort_four(a, b, max, min);
 		else // (stack_size(*a) > 3)
 		{
 				move(a, b);
