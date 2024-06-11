@@ -24,7 +24,7 @@ void    move(t_stack **a, t_stack **b)
 
     a_size = stack_size(*a);
   
-    while (a_size-- > 3)
+    while (a_size--)
     {
         min = find_min_value(*a);
         index = find_index(*a, min);
@@ -32,8 +32,12 @@ void    move(t_stack **a, t_stack **b)
         if (!is_sorted(*a))
             pb(a, b);
     }
-    if (!is_sorted(*a))
+    /*
+    if (is_sorted(*a))
+        break ;
+    els
         sort_three(a, find_max_value(*a), find_min_value(*a));
+        */
       b_size = stack_size(*b);
       
     //erase this  
