@@ -118,6 +118,10 @@ void	algo(t_stack **a, t_stack **b)
 		else // (stack_size(*a) > 3)
 		{
 				move(a, b);
+		/*while (stack_size(*a) > 0)
+			execute_cheapest_move(a, b);
+		while (stack_size(*b))
+			pa(b, a);*/
 
 			/*
 			while (stack_size(*a) > 3)

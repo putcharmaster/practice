@@ -6,7 +6,7 @@
 /*   By: sangha <sangha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 14:40:30 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/06/10 21:41:25 by sangha           ###   ########.fr       */
+/*   Updated: 2024/06/11 22:13:33 by sangha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@ typedef struct s_stack
 }	t_stack;
 
 void    move(t_stack **a, t_stack **b);
+int	 max(int a, int b);
+int	 min(int a, int b);
+int	calculate_cost(int index_a, int index_b, int size_a, int size_b);
+int	find_cheapest_move(t_stack *a, t_stack *b, int *index_a, int *index_b);
+void execute_cheapest_move(t_stack **a, t_stack **b);
 int     find_index(t_stack *stack, int value);
 void    move_to_top(t_stack **stack, int index, char stack_id);
 void    move_to_top_b(t_stack **stack, int index);
