@@ -13,6 +13,47 @@ int min(int a, int b)
     return (b);
 }
 
+void    pass_two_to_b(t_stack **a, t_stack **b)
+{
+    if (*a)
+        pb(a,b);
+    if (*a)
+        pb(a,b);
+}
+void    place_smallest_in_a_on_top(t_stack **a)
+{
+    int first;
+    int second;
+    int last;
+
+    first = (*a)->value;
+    second = (*a)->next->value;
+    last = last_stack_value(*a);
+    if (first < second)
+    {
+        if (first < last)
+            return ;
+        else
+            rra(a);
+    }
+    else
+    {
+        if (second < last)
+            sa(a);
+        else
+            rra(a);
+    }
+
+
+}
+
+  void    do_a_pb(t_stack **a, t_stack **b)
+    {
+        place_smallest_in_a_on_top(a);
+        pb(a,b);
+    }
+
+/*
 int calculate_cost(int index_a, int index_b, int size_a, int size_b)
 {
     int ra_count;
@@ -67,4 +108,4 @@ void execute_cheapest_move(t_stack **a, t_stack **b) {
     move_to_top(b, index_b, 'b');
 
     pb(a, b);
-}
+}*/

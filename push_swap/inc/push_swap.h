@@ -31,6 +31,11 @@ int	calculate_cost(int index_a, int index_b, int size_a, int size_b);
 int	find_cheapest_move(t_stack *a, t_stack *b, int *index_a, int *index_b);
 void execute_cheapest_move(t_stack **a, t_stack **b);
 int     find_index(t_stack *stack, int value);
+int	last_stack_value(t_stack *stack);
+
+void    do_a_pb(t_stack **a, t_stack **b);
+void    place_smallest_in_a_on_top(t_stack **a);
+
 void    move_to_top(t_stack **stack, int index, char stack_id);
 void    move_to_top_b(t_stack **stack, int index);
 size_t	ft_strlen(const char *str);

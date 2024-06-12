@@ -26,7 +26,14 @@ int     find_index(t_stack *stack, int value)
     }
     return (-1);
 }
-
+int	last_stack_value(t_stack *stack)
+{
+	if (stack == NULL)
+		return (-1);
+	while (stack->next)
+		stack = stack->next;
+	return (stack->value);
+}
 int	find_min_value(t_stack *stack)
 {
 	int	min;

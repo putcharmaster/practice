@@ -117,14 +117,14 @@ void	algo(t_stack **a, t_stack **b)
 		//	sort_four(a, b, max, min);
 		else // (stack_size(*a) > 3)
 		{
-				move(a, b);
-		/*while (stack_size(*a) > 0)
+		/*
+		while (stack_size(*a) > 0)
 			execute_cheapest_move(a, b);
 		while (stack_size(*b))
 			pa(b, a);*/
 
-			/*
-			while (stack_size(*a) > 3)
+			
+			while (stack_size(*a))
 			{
 				if ((*a)->value == min || (*a)->value == max)
 				{
@@ -135,7 +135,7 @@ void	algo(t_stack **a, t_stack **b)
 				else
 					ra(a);
 			}
-			*/
+			
 		}
 			//make_three_and_sort(a, b, max, min);	
 	}
