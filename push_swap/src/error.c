@@ -5,15 +5,9 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanhwang <sanhwang@student.42luxembourg.l  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/05 20:45:49 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/06/06 11:46:41 by sanhwang         ###   ########.fr       */
+/*   Created: 2024/06/15 12:28:01 by sanhwang          #+#    #+#             */
+/*   Updated: 2024/06/15 12:28:14 by sanhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/push_swap.h"
 
-int	print_error(void)
-{
-    write(2, "Error\n", 6);
-    return (1);
-}
