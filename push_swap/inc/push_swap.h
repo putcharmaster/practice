@@ -6,7 +6,7 @@
 /*   By: sangha <sangha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 14:40:30 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/06/11 22:13:33 by sangha           ###   ########.fr       */
+/*   Updated: 2024/06/14 19:57:12 by sangha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <limits.h>
 
+
 typedef struct s_stack
 {
 	int				value;
@@ -24,6 +25,24 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
+typedef struct s_best
+{
+	t_stack	*a;
+	t_stack	*b;
+	int		cost;
+	struct s_best	*next;
+}	t_best;
+
+void	free_pairs(t_best *pairs);
+void push_to_b(t_stack **a, t_stack **b, t_stack *optimal_a);
+void push_a_to_b(t_stack **a, t_stack **b);
+t_stack	*find_match_in_a(t_stack *a, int b_value);
+void	create_pair(t_best **head, t_best **tail, t_stack *a, t_stack *b);
+t_best	*best_combination(t_stack *a, t_stack *b);
+t_best	*find_optimal_nodes(t_stack *a, t_stack *b);
+t_best	*find_smaller_cost(t_best *optimal, t_stack *a, t_stack *b);
+int     is_upper_half(t_stack *stack, int value);
+int     cost_to_top(t_stack *stack, int value);
 void    move(t_stack **a, t_stack **b);
 int	 max(int a, int b);
 int	 min(int a, int b);
@@ -63,8 +82,8 @@ void	push(t_stack **src_top, t_stack **dst_top);
 void	pa(t_stack **b, t_stack **a);
 void	pb(t_stack **a, t_stack **b);
 void	make_three_and_sort(t_stack **a, t_stack **b, int max, int min);
-void	sort_three(t_stack **a, int max, int min);
-void	sort_four(t_stack **a, t_stack **b, int max, int min);
+void	sort_three(t_stack **a);
+void	sort_four(t_stack **a, t_stack **b);
 int	int_range(char **av);
 int	is_dup(t_stack *a);
 int	is_sorted(t_stack *a);

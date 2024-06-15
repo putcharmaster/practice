@@ -16,7 +16,9 @@
 
 void    move(t_stack **a, t_stack **b)
 {
-    int min;
+    t_best *best;
+    best = find_optimal_nodes(*a, *b);
+    int optimal;
     //int max;
     int index;
     int a_size;
@@ -25,8 +27,8 @@ void    move(t_stack **a, t_stack **b)
     a_size = stack_size(*a);
     while (a_size--)
     {
-        min = find_min_value(*a);
-        index = find_index(*a, min);
+        optimal = best->a->value;
+        index = find_index(*a, optimal);
         move_to_top(a, index, 'a');
         pb(a, b);
     }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanhwang <sanhwang@student.42luxembourg.l  +#+  +:+       +#+        */
+/*   By: sangha <sangha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 00:32:06 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/05/25 12:15:34 by sanhwang         ###   ########.fr       */
+/*   Updated: 2024/06/14 14:56:59 by sangha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,18 @@ void	free_stack(t_stack *head)
 		tmp = head->next;
 		free(head);
 		head = tmp;
+	}
+}
+
+
+void	free_pairs(t_best *pairs)
+{
+	t_best	*tmp;
+
+	while (pairs)
+	{
+		tmp = pairs;
+		pairs = pairs->next;
+		free(tmp);
 	}
 }

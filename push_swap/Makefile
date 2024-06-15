@@ -6,7 +6,7 @@
 #    By: sangha <sangha@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/04 17:54:16 by sanhwang          #+#    #+#              #
-#    Updated: 2024/06/11 21:52:57 by sangha           ###   ########.fr        #
+#    Updated: 2024/06/14 23:57:36 by sangha           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME = push_swap
 SRCS = ./src/main.c ./src/input.c ./src/sort.c ./src/rotate.c ./src/rev_rotate.c\
        ./src/push.c ./src/ft_atol.c ./src/free.c ./src/finder.c ./src/algo.c\
 	   ./src/extra.c ./src/ft_split.c ./src/error.c ./src/swap.c ./src/move.c\
-	   ./src/cheap.c ./src/target.c
+	   ./src/cheap.c ./src/target.c ./src/best.c ./src/dumb.c 
 OBJS = $(SRCS:.c=.o)
 
 # Clean command

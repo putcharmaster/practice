@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanhwang <sanhwang@student.42luxembourg.l  +#+  +:+       +#+        */
+/*   By: sangha <sangha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 12:39:01 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/05/29 14:47:04 by sanhwang         ###   ########.fr       */
+/*   Updated: 2024/06/14 19:59:04 by sangha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	stack_size(t_stack *head)
 	}
 	return (i);
 }
-
+/*
 void	make_three_and_sort(t_stack **a, t_stack **b, int max, int min)
 {
 	int	count;
@@ -53,14 +53,14 @@ void	make_three_and_sort(t_stack **a, t_stack **b, int max, int min)
 		pb(a, b);
 		count--;
 	}
-	sort_three(a, max, min);
+	sort_three(a);
 	while (count <= stack_size(*a))
 	{
 		pa(b, a);
 		count++;
 	}
 }
-
+*/
 int	find_mean(t_stack **head)
 {
 	int	mean;
