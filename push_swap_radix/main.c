@@ -6,7 +6,7 @@
 /*   By: sanhwang <sanhwang@student.42luxembourg.l  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 14:47:45 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/06/15 23:26:18 by sanhwang         ###   ########.fr       */
+/*   Updated: 2024/05/24 16:23:10 by sanhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,32 +48,6 @@ int	ft_lstsize(t_stack *a_head)
 	return (i);
 }
 
-void	init_stack(t_list **stack, int ac, char **av)
-{
-	t_list	*new;
-	char	**split;
-	int	i;
-	int	j;
-	
-	i = 1;
-	while (av[i])
-	{
-		split = ft_split(av[i], ' ');
-		if (split == NULL)
-			return ;
-		j = 0;
-		while (split[j])
-		{
-			new = ft_lstnew(ft_atoi(split[j]);
-			ft_lstadd_back(stack, new);
-			j++;
-		}
-		free_av(split);
-		i++;
-	}
-	index_stack(stack);
-}
-
 void	make_stack(char **av, t_stack **a_head)
 {
 	int	i;
@@ -110,7 +84,7 @@ int		is_dup(t_stack *a)
 	{
 		runner = current->next;
 		while (runner)
-i		{
+		{
 			if (runner->value == current->value)
 				return (1);
 			runner = runner->next;

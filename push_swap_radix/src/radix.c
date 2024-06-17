@@ -6,7 +6,7 @@
 /*   By: sangha <sangha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 15:46:14 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/06/17 23:30:22 by sangha           ###   ########.fr       */
+/*   Updated: 2024/06/17 17:36:32 by sangha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,30 +32,6 @@ static int  bits_of_max_index(t_list *a)
 
 void    radix_sort(t_list **a, t_list **b)
 {
-    int     max_bits;
-    int     i;
-    int     a_size;
-
-    max_bits = bits_of_max_index(*a);
-    i = max_bits - 1;
-    while (i >= 0)
-    {
-        a_size = ft_lstsize(*a);
-        while (a_size--)
-        {
-            if (((*a)->index >> i) & 1)
-                ra(a);
-            else
-                pb(a, b);
-        }
-        while (ft_lstsize(*b) > 0)
-            pa(b, a);
-        i--;
-    }
-}
-/*
-void    radix_sort(t_list **a, t_list **b)
-{
     t_list  *stack;
     int     i;
     int     a_size;
@@ -79,5 +55,4 @@ void    radix_sort(t_list **a, t_list **b)
         i++;
     }
 }
-*/
 
