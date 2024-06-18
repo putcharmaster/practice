@@ -6,20 +6,20 @@
 /*   By: sangha <sangha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 12:28:01 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/06/17 14:03:17 by sangha           ###   ########.fr       */
+/*   Updated: 2024/06/18 14:05:17 by sangha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-void     error_exit(void)
+void	error_exit(void)
 {
-    write(1, "Error\n", 6);
-    exit(0);
+	write(1, "Error\n", 6);
+	exit(0);
 }
 
-void    error_return(void)
+void	error_return(void)
 {
-    write(1, "Error\n", 6);
-    return ;
+	write(1, "Error\n", 6);
+	return ;
 }

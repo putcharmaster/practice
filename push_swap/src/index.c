@@ -7,15 +7,14 @@ static t_list	*find_min_stack(t_list *a)
 	min = NULL;
 	while (a)
 	{
-		if ((a->index == -1) &&
-			(min == NULL || (a->value < min->value) ))
+		if ((a->index == -1) && (min == NULL || (a->value < min->value)))
 			min = a;
 		a = a->next;
 	}
 	return (min);
 }
 
-void		index_stack(t_list **a)
+void	index_stack(t_list **a)
 {
 	t_list	*stack;
 	int		index;

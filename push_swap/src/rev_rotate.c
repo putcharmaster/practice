@@ -6,7 +6,7 @@
 /*   By: sangha <sangha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 00:03:29 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/06/15 21:51:23 by sangha           ###   ########.fr       */
+/*   Updated: 2024/06/18 14:07:23 by sangha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	rev_rotate(t_list **head)
 {
 	t_list	*prev;
-	t_list *last;
+	t_list	*last;
 	t_list	*tmp;
 
 	prev = NULL;

@@ -6,14 +6,13 @@
 /*   By: sangha <sangha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 19:19:59 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/06/17 16:27:12 by sangha           ###   ########.fr       */
+/*   Updated: 2024/06/18 14:05:56 by sangha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-
-static void		init_stack(t_list **a, int ac, char **av)
+static void	init_stack(t_list **a, int ac, char **av)
 {
 	int		i;
 	int		j;
@@ -65,33 +64,31 @@ static void		init_stack(t_list **a, int ac, char **av)
 		free_av(input);
 }*/
 
-
-
 /*
-static void		init_stack(t_list **a, char **av)
+static void	init_stack(t_list **a, char **av)
 {
-        t_list  *new;
-        char    **split;
-        int     i;
-        int     j;
+		t_list  *new;
+		char    **split;
+		int     i;
+		int     j;
 
-        i = 1;
-        while (av[i])
-        {
-                split = ft_split(av[i], ' ');
-                if (split == NULL)
-                        return ;
-                j = 0;
-                while (split[j])
-                {
-                        new = ft_lstnew(ft_atol(split[j]));
-                        ft_lstadd_back(a, new);
-                        j++;
-                }
-                free_av(split);
-                i++;
-        }
-        index_stack(a);
+		i = 1;
+		while (av[i])
+		{
+				split = ft_split(av[i], ' ');
+				if (split == NULL)
+						return ;
+				j = 0;
+				while (split[j])
+				{
+						new = ft_lstnew(ft_atol(split[j]));
+						ft_lstadd_back(a, new);
+						j++;
+				}
+				free_av(split);
+				i++;
+		}
+		index_stack(a);
 }
 */
 
@@ -104,7 +101,7 @@ static void	sort_stack(t_list **a, t_list **b)
 }
 static void	dup_check(t_list *a)
 {
-	t_list 	*current;
+	t_list	*current;
 	t_list	*runner;
 	int		value_to_compare;
 
@@ -133,7 +130,7 @@ int	main(int ac, char **av)
 
 	if (ac == 1)
 		return (1);
-	//if (!input_check(ac, av))
+	// if (!input_check(ac, av))
 	//	error_exit();
 	a = NULL;
 	b = NULL;
