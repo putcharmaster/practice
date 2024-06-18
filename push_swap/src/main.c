@@ -6,7 +6,7 @@
 /*   By: sangha <sangha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 19:19:59 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/06/18 14:05:56 by sangha           ###   ########.fr       */
+/*   Updated: 2024/06/18 14:10:26 by sanhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,60 +38,6 @@ static void	init_stack(t_list **a, int ac, char **av)
 	index_stack(a);
 }
 
-/*
-{
-	int		i;
-	int		j;
-	t_list	*new;
-	char	**input;
-
-	i = 0;
-	if (ac == 2)
-		input = ft_split(av[1], ' ');
-	else
-	{
-		i = 1;
-		input = av;
-	}
-	while (input[i])
-	{
-		new = ft_lstnew(ft_atol(input[i]));
-		ft_lstadd_back(a, new);
-		i++;
-	}
-	index_stack(a);
-	if (ac == 2)
-		free_av(input);
-}*/
-
-/*
-static void	init_stack(t_list **a, char **av)
-{
-		t_list  *new;
-		char    **split;
-		int     i;
-		int     j;
-
-		i = 1;
-		while (av[i])
-		{
-				split = ft_split(av[i], ' ');
-				if (split == NULL)
-						return ;
-				j = 0;
-				while (split[j])
-				{
-						new = ft_lstnew(ft_atol(split[j]));
-						ft_lstadd_back(a, new);
-						j++;
-				}
-				free_av(split);
-				i++;
-		}
-		index_stack(a);
-}
-*/
-
 static void	sort_stack(t_list **a, t_list **b)
 {
 	if (ft_lstsize(*a) < 5)
@@ -99,6 +45,7 @@ static void	sort_stack(t_list **a, t_list **b)
 	else
 		radix_sort(a, b);
 }
+
 static void	dup_check(t_list *a)
 {
 	t_list	*current;
@@ -130,8 +77,6 @@ int	main(int ac, char **av)
 
 	if (ac == 1)
 		return (1);
-	// if (!input_check(ac, av))
-	//	error_exit();
 	a = NULL;
 	b = NULL;
 	init_stack(&a, ac, av);
@@ -143,6 +88,6 @@ int	main(int ac, char **av)
 	}
 	sort_stack(&a, &b);
 	free_stack(&a);
-	free_stack(&b); // check if it's needed
+	free_stack(&b);
 	return (0);
 }

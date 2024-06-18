@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   finder.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sanhwang <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/18 14:12:18 by sanhwang          #+#    #+#             */
+/*   Updated: 2024/06/18 14:12:48 by sanhwang         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/push_swap.h"
 
 int	find_index(t_list *stack, int value)
@@ -40,7 +52,7 @@ int	find_max_value(t_list *stack)
 
 int	find_min_value(t_list *stack)
 {
-	int min;
+	int	min;
 
 	min = INT_MAX;
 	while (stack)

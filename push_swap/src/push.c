@@ -6,7 +6,7 @@
 /*   By: sangha <sangha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 00:09:12 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/06/15 21:51:09 by sangha           ###   ########.fr       */
+/*   Updated: 2024/06/18 14:13:03 by sanhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	push(t_list **src_top, t_list **dst_top)
 {
-	t_list *tmp;
+	t_list	*tmp;
 
 	if (*src_top == NULL)
 		return ;

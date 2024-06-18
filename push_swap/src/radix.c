@@ -6,7 +6,7 @@
 /*   By: sangha <sangha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 15:46:14 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/06/18 14:06:48 by sangha           ###   ########.fr       */
+/*   Updated: 2024/06/18 14:11:00 by sanhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ void	radix_sort(t_list **a, t_list **b)
 	max_bits = bits_of_max_index(*a);
 	while (i < max_bits)
 	{
-		a_size = ft_lstsize(*a); // it needs to be updated
+		a_size = ft_lstsize(*a);
 		while (a_size--)
 		{
-			stack = *a; // it needs to be updated as well
+			stack = *a;
 			if ((stack->index >> i) & 1)
 				ra(a);
 			else
