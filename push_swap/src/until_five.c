@@ -6,7 +6,7 @@
 /*   By: sangha <sangha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 15:46:24 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/06/17 03:51:53 by sangha           ###   ########.fr       */
+/*   Updated: 2024/06/18 13:56:31 by sanhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,19 +62,15 @@ void    sort_three(t_list **a)
             sa(a);
 }
 
-void    simple_sort(t_list **a, t_list **b)
+void	simple_sort(t_list **a, t_list **b)
 {
-    int     min;
-    
-    min = find_min_value(*a);
-    if (ft_lstsize(*a) == 4)
-        sort_four(a, b, min);
-    else if (ft_lstsize(*a) == 3)
-        sort_three(a);
+	int     min;
+	
+	min = find_min_value(*a);
+	if (ft_lstsize(*a) == 4)
+	    sort_four(a, b, min);
+	else if (ft_lstsize(*a) == 3)
+	    sort_three(a);
     else if (ft_lstsize(*a) == 2)
-        ra(a);
-    
-    
-    //else
-      //  radix_sort(a, b);
+	    ra(a);
 }

@@ -6,7 +6,7 @@
 /*   By: sangha <sangha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 15:35:26 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/06/16 23:03:44 by sangha           ###   ########.fr       */
+/*   Updated: 2024/06/18 13:46:24 by sanhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,16 @@
 
 # include <stdlib.h>
 # include <stdint.h>
-# include <unistd.h>
+# include <unistd.h>    
+
+typedef struct s_list
+{
+	int				value;
+	int				index;
+	struct s_list	*next;
+}				t_list;
 
 /*mandatory part*/
-long		ft_atol(const char *str);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t count, size_t size);
 int		ft_isalnum(int i);
@@ -52,15 +58,7 @@ char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
-/*bonus part*/
-
-typedef struct s_list
-{
-	int		value;
-	int		index;
-	struct s_list	*next;
-}		t_list;
-
+long	ft_atol(const char *str);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 //void	ft_lstclear(t_list **lst, void (*del)(void*));

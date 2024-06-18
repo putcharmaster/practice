@@ -6,7 +6,7 @@
 /*   By: sangha <sangha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 16:23:47 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/06/15 21:51:00 by sangha           ###   ########.fr       */
+/*   Updated: 2024/06/18 13:54:09 by sanhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	swap(t_list **head)
 {
 	t_list	*tmp;
 
-	if(*head == NULL || (*head)->next == NULL)
+	if (*head == NULL || (*head)->next == NULL)
 		return ;
 	tmp = (*head)->next;
 	(*head)->next = (*head)->next->next;
