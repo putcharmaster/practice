@@ -12,22 +12,6 @@
 
 #include "../inc/push_swap.h"
 
-/*
-static int	is_dup(long input, char **split)
-{
-	int		i;
-	long	num;
-
-	i = 0;
-	while (split[i])
-	{
-		num = ft_atol(split[i]);
-		if (input == num)
-			return (1);
-		i++;
-	}
-	return (0);
-}*/
 static int	out_of_int(long input)
 {
 	return (input > 2147483647 || input < -2147483648);
@@ -76,34 +60,3 @@ int	input_check(int ac, char **av)
 	}
 	return (1);
 }
-/*
-void	input_check(int ac, char **av)
-{
-		char    **split;
-		int     i;
-		int     j;
-		long    input;
-
-		i = 1;
-		while (av[i])
-		{
-			split = ft_split(av[i], ' ');
-			if (split == NULL)
-				return ;
-			j = 0;
-			while (split[j])
-			{
-				input = ft_atol(split[j]);
-				if (is_not_digit(split[j]))
-					//print_error();
-					return ;
-				if (out_of_int(input) || is_dup(input, split))
-					//print_error();
-					return ;
-				j++;
-			}
-			free_av(split);
-			i++;
-		}
-}
-*/

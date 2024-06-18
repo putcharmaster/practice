@@ -6,7 +6,7 @@
 /*   By: sangha <sangha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 19:19:59 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/06/18 14:10:26 by sanhwang         ###   ########.fr       */
+/*   Updated: 2024/06/18 15:10:15 by sanhwang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	init_stack(t_list **a, int ac, char **av)
 
 static void	sort_stack(t_list **a, t_list **b)
 {
-	if (ft_lstsize(*a) < 5)
+	if (ft_lstsize(*a) <= 5)
 		simple_sort(a, b);
 	else
 		radix_sort(a, b);

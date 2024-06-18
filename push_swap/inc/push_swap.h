@@ -38,6 +38,7 @@ void	free_stack(t_list **stack);
 int		is_sorted(t_list *stack);
 
 //until_five.c
+void	min_to_top(t_list **a);
 void	sort_three(t_list **a);
 void	simple_sort(t_list **a, t_list **b);
 

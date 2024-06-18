@@ -12,6 +12,38 @@
 
 #include "../inc/push_swap.h"
 
+void	min_to_top(t_list **a)
+{
+	int		min;
+	int		index;
+
+	min = find_min_value(*a);
+	index = find_index(*a, min);
+	if (index < ft_lstsize(*a) / 2)
+		while (index--)
+			ra(a);
+	else
+		while (index++ < ft_lstsize(*a))
+			rra(a);
+}
+
+
+static void	sort_five(t_list **a, t_list **b)
+{
+	int		i;
+
+	i = 0;
+	while (i++ < 2)
+	{
+		min_to_top(a);
+		pb(a, b);
+	}
+	if (!is_sorted(*a))
+		sort_three(a);
+	pa(b, a);
+	pa(b, a);
+}
+
 static void	sort_four(t_list **a, t_list **b, int min)
 {
 	int	index;
@@ -67,7 +99,10 @@ void	simple_sort(t_list **a, t_list **b)
 	int	min;
 
 	min = find_min_value(*a);
-	if (ft_lstsize(*a) == 4)
+
+	if (ft_lstsize(*a) == 5)
+		sort_five(a, b);
+	else if (ft_lstsize(*a) == 4)
 		sort_four(a, b, min);
 	else if (ft_lstsize(*a) == 3)
 		sort_three(a);
