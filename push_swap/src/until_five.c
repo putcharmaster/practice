@@ -6,31 +6,15 @@
 /*   By: sangha <sangha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 15:46:24 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/06/18 14:04:40 by sangha           ###   ########.fr       */
+/*   Updated: 2024/06/19 21:07:24 by sangha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-void	min_to_top(t_list **a)
-{
-	int		min;
-	int		index;
-
-	min = find_min_value(*a);
-	index = find_index(*a, min);
-	if (index < ft_lstsize(*a) / 2)
-		while (index--)
-			ra(a);
-	else
-		while (index++ < ft_lstsize(*a))
-			rra(a);
-}
-
-
 static void	sort_five(t_list **a, t_list **b)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	while (i++ < 2)
@@ -99,7 +83,6 @@ void	simple_sort(t_list **a, t_list **b)
 	int	min;
 
 	min = find_min_value(*a);
-
 	if (ft_lstsize(*a) == 5)
 		sort_five(a, b);
 	else if (ft_lstsize(*a) == 4)
