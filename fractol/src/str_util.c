@@ -2,7 +2,7 @@
 
 int     ft_isdigit(char *str)
 {
-    while (str)
+    while (*str)
     {
         if ((*str >= '0' && *str <= '9')
             || *str == '-' || *str == '.')
@@ -13,7 +13,7 @@ int     ft_isdigit(char *str)
     return (1);
 }
 
-static int    ft_strlen(char *str)
+static int    ft_strlen(const char *str)
 {
     int     i;
 

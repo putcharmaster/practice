@@ -23,11 +23,11 @@ void rendering(t_data *data)
     {
         while (data->pos_y < SIZE)
         {
-            if (!strcmp(data->type, "julia"))
+            if (!ft_strcmp(data->type, "julia"))
                 draw_julia(data);
-            else if (!strcmp(data->type, "mandelbrot"))
+            else if (!ft_strcmp(data->type, "mandelbrot"))
                 draw_mandelbrot(data);
-            else if (!strcmp(data->type, "burningship"))
+            else if (!ft_strcmp(data->type, "burningship"))
                 draw_burningship(data);
             data->pos_y++;
         }

@@ -12,21 +12,25 @@ int     exit_program(t_data *data)
     return (0);
 }
 
-void    put_pixel_to_image(t_data *data, int x, int y, int color)
+void	put_pixel_to_image(t_data *data, int x, int y, int color)
 {
-    char    *dst;
+	char	*dst;
 
-    dst = data->img + (y * data->line_size + x * (data->bpp / 8));
-    *(unsigned int *)dst = color;
+	dst = data->img_addr + (y * data->line_size + x * (data->bpp / 8));
+	*(unsigned int *)dst = color;
 }
 static void    iterate(t_data *data, int key_code)
 {
     if (key_code == P_KEY)
+    {
         if (data->max_iters > 10)
             data->max_iters -= 10;
+    }
     else if (key_code == O_KEY)
+    {    
         if (data->max_iters < 4000)
             data->max_iters += 10;
+    }
 }
 
 int     handle_key(int key_code, t_data *data)

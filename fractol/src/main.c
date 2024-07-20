@@ -6,7 +6,7 @@
 /*   By: sangha <sangha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 10:07:03 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/07/20 23:18:05 by sangha           ###   ########.fr       */
+/*   Updated: 2024/07/21 00:46:55 by sangha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void    init_fractal(t_data *data, const char *type, char **av)
         }
         else
         {
-            ft_putstr("Usage: ./fractol <fractal> [<const_real> <const_imag>]");
+            ft_putstr("Usage: ./fractol <fractal> <const_real> <const_imag>");
             exit(0);
         }
     }
@@ -58,10 +58,11 @@ void    init_mlx(t_data *data)
                     &data->line_size, &data->endian);
 }
 
-static int     intput_check(int ac, char **av)
+static int     input_check(int ac, char **av)
 {
     if ((ac == 2 && !ft_strcmp(av[1], "mandelbrot"))
         || (ac == 4 && !ft_strcmp(av[1], "julia"))
+        || (ac == 2 && !ft_strcmp(av[1], "julia"))
         || (ac == 2 && !ft_strcmp(av[1], "burningship")))
         return (1);
     else

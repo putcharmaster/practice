@@ -6,7 +6,7 @@
 /*   By: sangha <sangha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 10:05:40 by sanhwang          #+#    #+#             */
-/*   Updated: 2024/07/20 23:58:50 by sangha           ###   ########.fr       */
+/*   Updated: 2024/07/21 00:13:21 by sangha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <math.h>
+# include <stdlib.h>
+# include <stdio.h>
 
 # define SIZE 800
 //X11 keycode

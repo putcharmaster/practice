@@ -1,14 +1,14 @@
 CC = gcc
 CFLAGS = -g -Wall -Wextra -Werror
 NAME = fractol
-SRCS = ./src/main.c ./src/str_util.c ./src/ft_atof.c ./src/data_util.c
-	 ./src/render.c ./src/fractal.c
+SRCS = ./src/main.c ./src/str_util.c ./src/ft_atof.c ./src/data_util.c \
+	./src/render.c ./src/fractal.c
 OBJS = $(SRCS:./src/%.c=./objs/%.o)
 MLX_LIB = mlx
 MLX_FLAGS = -L$(MLX_LIB) -lmlx -L/usr/lib/X11 -lXext -lX11 -lm
 
 # Target to build the executable
-all: $(MLX_LIB) $(NAME)
+all: $(NAME)
 
 # Target to clone and build MiniLibX
 $(MLX_LIB):
@@ -18,7 +18,7 @@ $(MLX_LIB):
 	$(MAKE) -C $(MLX_LIB)
 
 # Target to link object files into the executable
-$(NAME): $(OBJS)
+$(NAME): $(MLX_LIB) $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(MLX_FLAGS) -o $(NAME)
 
 # Pattern rule to compile .c files into .o files
