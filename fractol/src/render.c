@@ -1,18 +1,16 @@
 #include "../inc/fractol.h"
 
-void    apply_zoom(t_data *data, int x, int y, int direction)
+void apply_zoom(t_data *data, int x, int y, int direction)
 {
-    double  zoom_factor;
+    double zoom_factor = 1.50;
 
-    zoom_factor = 1.20;
-    data->offset_x = (x / data->zoom + data->offset_x)
-        - (x / (data->zoom * zoom_factor));
-    data->offset_y = (x / data->zoom + data->offset_y)
-        - (y / (data->zoom * zoom_factor));
-    if (direction == 1)
-        data->zoom *= zoom_factor;
-    else if (direction == -1)
-        data->zoom /= zoom_factor;
+    if (direction == -1)
+        zoom_factor = 1.0 / zoom_factor;
+
+    double new_zoom = data->zoom * zoom_factor;
+    data->offset_x = (x / data->zoom + data->offset_x) - (x / new_zoom);
+    data->offset_y = (y / data->zoom + data->offset_y) - (y / new_zoom);
+    data->zoom = new_zoom;
 }
 
 void rendering(t_data *data)

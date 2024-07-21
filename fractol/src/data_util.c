@@ -38,15 +38,15 @@ int     handle_key(int key_code, t_data *data)
     if (key_code == ESC)
         exit_program(data);
     else if (key_code == L_ARR)
-		data->offset_x -= 50 / data->zoom;
+		data->offset_x -= 190 / data->zoom;
 	else if (key_code == R_ARR)
-		data->offset_x += 50 / data->zoom;
+		data->offset_x += 100 / data->zoom;
 	else if (key_code == U_ARR)
-		data->offset_y -= 50 / data->zoom;
+		data->offset_y -= 100 / data->zoom;
 	else if (key_code == D_ARR)
-		data->offset_y += 50 / data->zoom;
+		data->offset_y += 100 / data->zoom;
 	else if (key_code == A_KEY)
-		data->color += 50;
+		data->color += 100;
 	else if (key_code == O_KEY || key_code == P_KEY)
 		iterate(data, key_code);
 	render_fractal(data);
@@ -57,7 +57,7 @@ int     handle_mouse(int mouse_code, int x, int y, t_data *data)
 {
     if (mouse_code == SCROLL_UP)
         apply_zoom(data, x, y, 1);
-    else if (mouse_code == SCROLL_UP)
+    else if (mouse_code == SCROLL_DOWN)
         apply_zoom(data, x, y, -1);
     render_fractal(data);
     return (0);

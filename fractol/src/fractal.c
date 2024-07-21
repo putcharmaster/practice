@@ -51,7 +51,7 @@ void    draw_julia(t_data *data)
         hue = 0x000000;
     else
         hue = (data->color * i);
-    put_pixel_to_image(data, data->pos_x, data->pos_y, hue);
+    put_pixel_to_image(data, data->pos_x, SIZE - data->pos_y - 1, hue);
 }
 
 void    draw_burningship(t_data *data)
