@@ -3,7 +3,7 @@
 
 char	*ft_dup(char *str)
 {
-	int 	i = 0;
+	int	i = 0;
 	char	*dup;
 
 	while (str[i])

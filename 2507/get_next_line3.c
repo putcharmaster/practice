@@ -3,7 +3,7 @@
 
 char	*ft_dup(char *str)
 {
-	int 	i = 0;
+	int	i = 0;
 	char	*dup;
 
 	while (str[i])
@@ -26,7 +26,7 @@ char	*get_next_line(int fd)
 	char	buf[10000];
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (NULL);
+		return(NULL);
 	while ((r = read(fd, &c, 1)) > 0)
 	{
 		buf[i++] = c;
